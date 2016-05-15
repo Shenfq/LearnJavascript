@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background-color:#099;	
+}
+div{
+	width:100px;
+	height:50px;
+	background-color:#900;
+	
+}
+

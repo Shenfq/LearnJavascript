@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js事件</title>
+	<style type="text/css">
+		#div1{
+			height: 50px;
+			width: 50px;
+			background-color: red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		function newWindow(){
+			alert('nihao');
+		}
+		function showdiv(){
+			var ondiv1=document.getElementById('div1');
+			ondiv1.style.display="block";
+		}
+		function hiddendiv(){
+			var ondiv1=document.getElementById('div1');
+			ondiv1.style.display="none";
+		}
+	</script>
+	
+	<input type="button" value="点我"  onclick="newWindow()" onMouseOver="showdiv()" onMouseOut="hiddendiv()" />
+
+	<div id="div1"></div>
+</body>
+</html>

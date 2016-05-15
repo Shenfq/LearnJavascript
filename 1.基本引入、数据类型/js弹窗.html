@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js弹窗</title>
+</head>
+<body>
+    <script language="JavaScript">
+        //1、普通弹窗
+        //alert('我是一个普通的弹窗');
+
+        //2.选择弹窗
+        //confirm('我是一个能选择的弹窗吗？');
+
+        //3.输入弹窗
+        //prompt('请输入内容：');
+
+
+        var name=prompt("骑士，请输入你的名字：");
+        if(name){
+            alert(name+",你需要解救公主");
+            var check=confirm("请问你是否携带宝剑");
+            if(check){
+                alert("你将进入打怪模式");
+                alert("你已经成功打败怪兽");
+                var success=prompt("请发表你的成功感悟");
+                document.write(success);
+            }else{
+                alert("请取回宝剑后再来");
+            }
+
+        }else{
+            alert("你可以滚了");
+        }
+    </script>
+</body>
+</html>

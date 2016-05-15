@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js的数据类型</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var i=12e3;  //数值型
+		document.write(i+"的数据类型为"+typeof(i)+"<br />");
+
+		var j;   //undefined
+		document.write(j+"的数据类型为"+typeof(j)+"<br />");
+
+		var e=true;   //boolean
+		document.write(e+"的数据类型为"+typeof(e)+"<br />");
+
+		var f="123";   //string
+		document.write(f+"的数据类型为"+typeof(f)+"<br />");
+
+		var k=null;    //object
+		document.write(k+"的数据类型为"+typeof(k)+"<br />");
+
+		document.write("<br><br>");
+		document.write("<p>*********************</p>");
+		document.write("<br><br>");
+
+		var a="123";
+		a=a+1;
+		document.write(a+"类型为"+typeof(a)+"<br>");
+
+		a="1er4";
+		a++;
+		document.write(a+"类型为"+typeof(a)+"<br>");
+
+		a="123";
+		++a;
+		document.write(a+"类型为"+typeof(a)+"<br>");
+
+
+		var my_array = new Array(5,"你好","",true,null);
+
+		for(var i=0;i<5;i++){
+			document.write(my_array[i]+",");
+		}
+
+	</script>
+</body>
+</html>

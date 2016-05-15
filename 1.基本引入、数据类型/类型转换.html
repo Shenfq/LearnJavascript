@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		document.write("**********隐式类型转换**********<br><br>");
+
+		var i="123";
+		i++;
+		document.write(i+"类型为"+typeof(i)+"<br>");
+		i=i+1;
+		document.write(i+"类型为"+typeof(i)+"<br>");
+		i="aaa";
+		i++;
+		document.write(i+"类型为"+typeof(i)+"<br>");
+		i="aaa";
+		i=i+1;
+		document.write(i+"类型为"+typeof(i)+"<br>");
+		var f;
+		document.write(f+"类型为"+typeof(f)+"<br>");
+		f=f+1;
+		document.write(f+"类型为"+typeof(f)+"<br>");
+		f="y">"a";
+		document.write(f+"类型为"+typeof(f)+"<br>");
+		f="12v">4;
+		document.write(f+"类型为"+typeof(f)+"<br>");
+
+
+		document.write("<br><br>**********强制转换**********<br><br>");
+		document.write("<br>转换成数值类型<br>");
+
+		var j="123";
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j="-100";
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j="";
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j="     ";
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j=true;
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j=false;
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j=null;
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j="123abc";
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		j="abc123";
+		document.write(j+"强制转化为"+typeof(Number(j))+"->"+Number(j)+"<br>");
+		var k;
+		document.write(k+"强制转化为"+typeof(Number(k))+"->"+Number(k)+"<br>");
+
+		document.write("<br><br>");
+
+
+		var a="123";
+		document.write(a+"按parseInt转化-->"+parseInt(a)+"<br>");
+		document.write(a+"按parseFloat转化-->"+parseFloat(a)+"<br>");
+
+		a="12.2545";
+		document.write(a+"按parseInt转化-->"+parseInt(a)+"<br>");
+		document.write(a+"按parseFloat转化-->"+parseFloat(a)+"<br>");
+
+		a="123a225d";
+		document.write(a+"按parseInt转化-->"+parseInt(a)+"<br>");
+		document.write(a+"按parseFloat转化-->"+parseFloat(a)+"<br>");
+
+		a="123.125a225d";
+		document.write(a+"按parseInt转化-->"+parseInt(a)+"<br>");
+		document.write(a+"按parseFloat转化-->"+parseFloat(a)+"<br>");
+
+		a="a75375";
+		document.write(a+"按parseInt转化-->"+parseInt(a)+"<br>");
+		document.write(a+"按parseFloat转化-->"+parseFloat(a)+"<br>");
+
+		a=true;
+		document.write(a+"按parseInt转化-->"+parseInt(a)+"<br>");
+		document.write(a+"按parseFloat转化-->"+parseFloat(a)+"<br>");
+
+		var p;
+		document.write(p+"按parseInt转化-->"+parseInt(p)+"<br>");
+		document.write(p+"按parseFloat转化-->"+parseFloat(p)+"<br>");
+
+		document.write("<br><br><br>");
+		document.write("<br>转换成布尔类型<br>");
+
+		var j=0;
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j="-100";
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j="";
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j="     ";
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j=true;
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j=false;
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j=null;
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		var z;
+		document.write(z+"强制转化为"+typeof(Boolean(z))+"->"+Boolean(z)+"<br>");
+		j="123abc";
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+		j="abc123";
+		document.write(j+"强制转化为"+typeof(Boolean(j))+"->"+Boolean(j)+"<br>");
+
+
+		document.write("<br><br><br>");
+		document.write("<br>转换成字符串类型<br>");
+
+		var j=0;
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j="-100";
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j="";
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j="     ";
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j=true;
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j=false;
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j=null;
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		var q;
+		document.write(q+"强制转化为"+typeof(String(q))+"->"+String(q)+"<br>");
+		j="123abc";
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+		j="abc123";
+		document.write(j+"强制转化为"+typeof(String(j))+"->"+String(j)+"<br>");
+
+		//var k;
+		//var v=null;
+		//   toString 不能转换null和undefined
+		var v=12;
+		document.write(v.toString()+"<br>");
+		document.write(v.toString(16)+"<br>");
+		document.write(v.toString(8)+"<br>");
+		document.write(v.toString(2)+"<br>");
+ 
+		var h=false;
+		document.write(h.toString());
+
+
+
+	</script>
+</body>
+</html>

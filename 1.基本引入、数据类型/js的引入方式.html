@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js引入方式</title>
+    <style type="text/css">
+        #div1{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!--外部引入js代码-->
+    <script type="text/javascript" src="js的引入方式.js"></script>
+
+    <!--内部引入-->
+    <script language="javascript">
+        document.write("我是内部引入的js代码");
+    </script>
+
+
+    <!--从行内进入js代码-->
+    <div id="div1" onmouseover="alert('我是行内引入的js代码');">点我试试</div>
+
+
+
+
+
+</body>
+</html>
