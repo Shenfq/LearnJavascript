@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var i=1;
+
+		// document.write("<table border=1 width=280px cellspacing=0 cellpadding=3 ><tr><td>姓名</td><td>年龄</td></tr>");
+
+		// while(i<4){
+		// 	document.write("<tr><td>张"+i+"</td><td>"+(i+20)+"</td></tr>");
+		// 	i++;
+		// }
+		// document.write("</table>");
+
+		var str="<table border=1 width=280px cellspacing=0 cellpadding=3 >";
+		str+="<tr><td>姓名</td><td>年龄</td></tr>";
+		while(i<4){
+		 	str+="<tr><td>张"+i+"</td><td>"+(i+20)+"</td></tr>";
+		 	i++;
+		}
+		str+="</table>";
+
+		document.write(str);
+
+	</script>
+</body>
+</html>

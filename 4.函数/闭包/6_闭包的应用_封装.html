@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var getAge,setAge;
+		(
+			function (){
+				var age=0;
+				setAge=function (a){
+					age=a;
+				}
+				getAge=function (){
+					return age;
+				}
+			}
+		)();
+
+		document.write(getAge()+"<br />");
+		setAge(20);
+		document.write(getAge()+"<br />");
+		
+	</script>
+</body>
+</html>

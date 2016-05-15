@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+	<script type="text/javascript">
+		var class1=[
+			{
+				name:'john',
+				age:20,
+				gender:1
+			},
+			{
+				name:'jack',
+				age:21,
+				gender:1
+			},
+			{
+				name:'rose',
+				age:22,
+				gender:0
+			}
+		];
+		var class2=[
+			{
+				name:'smith',
+				age:18,
+				gender:0
+			},
+			{
+				name:'tom',
+				age:24,
+				gender:1
+			},
+			{
+				name:'fank',
+				age:22,
+				gender:1
+			}
+		];
+
+		//求班级的平均年龄
+		function getAverageAge( arr ){
+			var length=arr.length;
+			var ave=0;
+			var sum=0;
+
+			for( index in arr){
+				sum+=arr[index].age;
+			}
+			ave=sum/length;
+			return ave;
+		}
+
+		//alert(getAverageAge(class1));
+		//alert(getAverageAge(class2));
+
+		//求班级男女比例
+		function getSexPer(arr){
+			var length=arr.length;
+			var mannum=0;
+			var womannum=0;
+			var sexper;
+			for(index in arr){
+				if(arr[index].gender==0){
+					womannum++;
+				}else if(arr[index].gender==1){
+					mannum++;
+				}
+			}
+			sexper=mannum/womannum;
+			return sexper;
+		}
+
+		document.write(getSexPer(class1));
+	</script>
+<body>
+</body>
+</html>

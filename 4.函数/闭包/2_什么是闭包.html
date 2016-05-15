@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function greet(name){
+			return function (greeting){
+				return greeting+"  "+name;
+			}
+		}
+		var n="smith";
+		var r=greet(n);
+		n='tom';
+		r=greet(n);
+		document.write(r('hello'));
+	</script>
+</body>
+</html>

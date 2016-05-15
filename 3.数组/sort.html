@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr1=[15,5,68,85,30];
+		document.write("排序前："+arr1+"<br>");
+		arr1.sort(function (a,b){return -1 });
+		document.write("排序后："+arr1+"<br>");
+
+
+		var arr2=[1,2,3,4,5,6,7,8,9,10,11,12,13];
+		document.write("排序前："+arr2+"<br>");
+		arr2.sort(function (a,b){return Math.random()-0.5 });
+		document.write("排序后："+arr2+"<br>");
+
+
+		var arr2=[59,564,87,12,35,94];
+		document.write("排序前："+arr2+"<br>");
+		arr2.reverse();
+		document.write("排序后："+arr2+"<br>");
+	</script>
+
+</body>
+</html>

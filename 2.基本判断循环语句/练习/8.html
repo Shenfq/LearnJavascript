@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		for(var i=1000;i<10000;i++){
+			var k=parseInt(i/1000);
+			var h=parseInt(i/100-10*k);
+			var s=parseInt(i/10-100*k-10*h);
+			var g=i%10;
+			if(k>h&&h>s&&s>g&&k==h+s+g){
+				document.write(i+"<br>");
+			}
+		}
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = ['*','##','***','&&','****','##*'];
+		arr[7]="**";
+		
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]!=undefined){
+				var newarr=arr[i].split("");
+				for(var j=0;j<newarr.length;j++){
+					if(newarr[j]!="*"){
+						delete arr[i];
+						break;
+					}
+				}
+
+			}
+		}
+		arr.sort();
+		document.write(arr);
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var num=prompt("请输入一个正整数:");
+		var newnum=0;
+		while(num){
+			newnum=newnum*10+num%10;
+			num=parseInt(num/10);
+		}
+
+		document.write(newnum);
+	</script>
+</body>
+</html> 

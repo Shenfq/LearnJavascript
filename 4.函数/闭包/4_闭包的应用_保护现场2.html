@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	/*
+	function f(){
+		var a=[];
+		for(var i=0;i<3;i++){
+			a[i]=function (){
+				return i*2;       //如果直接返回，根据闭包的特性，会输出3个6
+			};
+		}
+		return a;
+	}*/
+
+	//修改1
+	/*
+	function f(){
+		var a=[];
+		function inner(x){
+			return function (){
+				return x*2;
+			}
+		};
+		for(var i=0;i<3;i++){
+			a[i]=inner(i);
+		}
+		return a;
+	}*/
+
+	//修改2
+	/*function f(){
+		var a=[];
+		
+		for(var i=0;i<3;i++){
+			a[i]=function(x){
+				return function (){
+					return x*2;
+				}
+			}(i);
+		}
+		return a;
+	}*/
+
+
+	//修改3
+	function inner(x){
+		return function (){
+			return x*2;
+		}
+	};
+	function f(){
+		var a=[];
+		
+		for(var i=0;i<3;i++){
+			a[i]=inner(i);
+		}
+		return a;
+	}
+
+	var result=f();
+	document.write(result[0]()+"<br />"+result[1]()+"<br />"+result[2]());
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var ycArr=(
+			function (){
+				var arr=[];//属性
+				return {
+					//方法
+					add:function (){
+						for(i=0;i<arguments.length;i++){
+							arr.push(arguments[i]);
+						}
+					},
+					size:function (){
+						return arr.length;
+					},
+					clear:function(){
+						arr=[];
+					},
+					get:function(){
+						return arr;
+					}
+				};
+			}
+			
+		)();
+
+		ycArr.add('a','b','c');
+
+		document.write(ycArr.size()+"<br />");
+		ycArr.clear();
+		document.write(ycArr.size()+"<br />");
+		ycArr.add('x','f',2,8);
+		document.write(ycArr.get()+"<br />");
+		var result=ycArr.get();
+		// for(var i=0;i<result.length;i++){
+		// 	document.write(result[i]+"<br />");
+		// }
+
+	</script>
+</body>
+</html>

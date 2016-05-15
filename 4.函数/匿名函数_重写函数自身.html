@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function a(){
+			document.write("hello"+"<br />");
+			a=function (){
+				document.write("bye"+"<br />");
+			}
+		}
+		a();
+		a();
+
+
+		// 可以用来判断浏览器类型，并进行适配
+
+		function showTable(){
+			document.write("检测浏览器类型"+"<br />");
+			var r=2;
+			if("ActiveXObject" in window){
+				r=1;
+			}
+			if(r==1){
+				showTable=function (){
+					document.write("以ie的特性来显示Talbe"+"<br />");
+				}
+			}else if(r==2){
+				showTable=function (){
+					document.write("以chrome的特性来显示Table"+"<br />");
+				}
+			}
+		}
+		function showTree(){
+			document.write("检测浏览器类型"+"<br />");
+			var r=2;
+			if("ActiveXObject" in window){
+				r=1;
+			}
+			if(r==1){
+				showTree=function (){
+					document.write("以ie的特性来显示Tree"+"<br />");
+				}
+			}else if(r==2){
+				showTree=function (){
+					document.write("以chrome的特性来显示Tree"+"<br />");
+				}
+			}
+		}
+		(function(){
+			showTable();
+			showTree();
+		})();
+
+		showTable();
+		showTree();
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function show(arr){
+			for(index in arr){
+				document.write(arr[index]+"<br />");
+			}
+		}
+		function show2(arr){
+			document.write("<ul>");
+			for(index in arr){
+				document.write("<li>"+arr[index]+"</li>");
+			}
+			document.write("</ul>");
+
+		}
+
+		function jisuan (){
+			var arr=new Array();
+			for(var i=0;i<arguments.length-1;i++){
+				arr[i]=arguments[i]*2;
+			}
+			if((typeof arguments[arguments.length-1])=="function"){
+				arguments[arguments.length-1](arr);
+			}
+		}
+
+		jisuan(1,2,3,5,show2);
+
+		jisuan(22,34,function (arr){
+			for(index in arr){
+				document.write(arr[index]+"<hr />");
+			}
+		});
+
+
+	</script>
+</body>
+</html>

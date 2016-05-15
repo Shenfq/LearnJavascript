@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		// var a=['*','*','*','*','*','欢','迎','光','临','*','*','*','*','*'];
+		// function zh(){
+		// 	a.push(a.shift());
+		// 	var b=a.join("");
+		// 	document.title=b;
+
+		// }
+		// window.setInterval("zh()",100);
+		var str="*****欢迎光临*****";
+		function zh(){
+			var a=str.substring(0,1);
+			var b=str.substring(1);
+			str=b+a;
+			document.title=str;
+		}
+		
+		
+		window.setInterval("zh()",500);
+	</script>
+</body>
+</html>

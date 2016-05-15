@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var stulength=5;
+		var grade=new Array(stulength);
+		for(var i=0;i<stulength;i++){
+			grade[i]=prompt("请输入第"+(i+1)+"位同学的成绩");
+		}
+		document.write(grade+"<br />");
+		for(var j=0;j<stulength;j++){
+			if(grade[j]>=90){
+				document.write("第"+(j+1)+"位同学的成绩为优<br />");
+			}else if(grade[j]>=80){
+				document.write("第"+(j+1)+"位同学的成绩为良<br />");
+			}else if(grade[j]>=70){
+				document.write("第"+(j+1)+"位同学的成绩为中<br />");
+			}else if(grade[j]>=60){
+				document.write("第"+(j+1)+"位同学的成绩为及格<br />");
+			}else if(grade[j]<60){
+				document.write("第"+(j+1)+"位同学的成绩为不及格<br />");
+			}
+
+		}
+	</script>
+</body>
+</html>

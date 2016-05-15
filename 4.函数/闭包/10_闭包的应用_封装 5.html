@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function selfNext(arr){
+			var index=0;
+			return function (){
+				document.write(index+"---");
+				return arr[index++];
+			}
+		}
+
+		var mynext=selfNext([1,2,3,4]);
+
+		while(a=mynext()){
+			document.write(a+"<br />");
+		}
+	</script>
+</body>
+</html>

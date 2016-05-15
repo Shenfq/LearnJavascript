@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var person={name:'smith',age:20};
+		showInfoInObject(person);
+
+		person.sex="male";
+		showInfoInObject(person);
+
+		person.showInfo=function (){
+			document.write("信息为：");
+			showInfoInObject(this);
+		}
+		showInfoInObject(person);
+
+		person['sex']="female";
+		showInfoInObject(person);
+
+		delete(person.sex);
+		showInfoInObject(person);
+
+		person.showInfo();
+
+		function showInfoInObject(obj){
+			for(var key in obj){
+				document.write(key+":"+obj[key]+"<br />");
+			}
+			document.write("<hr />");
+		}
+	</script>
+</body>
+</html>

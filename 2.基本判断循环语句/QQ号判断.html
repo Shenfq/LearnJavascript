@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var qqnum=prompt("请输入QQ号");
+
+		// if(qqnum.length != (Number(qqnum)+"").length){
+		// 	alert("不能有0在前面");
+		// }
+		alert(parseInt(qqnum));
+		
+		if (qqnum==null||!qqnum) {
+			alert("输入为空");
+		}
+		if(isNaN(qqnum)){
+			alert("请输入数字");
+		}
+		if(qqnum<10000||qqnum>9999999999){
+			alert("数字必须在5位以上，10位以内");
+		}
+		if(qqnum!=parseInt(qqnum)){
+			alert("不能是小数");
+		}
+
+	</script>
+</body>
+</html>

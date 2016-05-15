@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var person={name:'smith',age:20};
+		person.sex="male";
+		person.showInfo=function (){
+			document.write("当前的信息为："+this.name+"   "+this['age']+"<br />");
+		}
+
+		document.write("===========================================<br />");
+
+		function showInfoInObject(obj){
+			for(var key in obj){
+
+				if(obj[key] instanceof Function){
+					obj[key]();
+				}else{
+					document.write(key+":"+obj[key]+"<br />");
+				}
+				
+			}
+			document.write("<hr />");
+		}
+		showInfoInObject(person);
+
+
+		
+		
+	</script>
+</body>
+</html>

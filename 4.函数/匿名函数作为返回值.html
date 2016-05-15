@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function a(){
+			document.write("hello<br />");
+
+			return function (name){
+				document.write("byebye"+name+"<br />")
+			};
+		}
+
+		a()("haha");
+	</script>
+</body>
+</html>

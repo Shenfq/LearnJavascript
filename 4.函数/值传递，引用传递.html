@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function increment(num){   //值传递，如果实参是传递的是基本类型数据，则只传递值
+			num++;
+			return num;
+		}
+		var a=1;
+		var x=increment(a);
+		document.write(a+"---"+x+"<br />");
+
+		function obimcrement(object){  //引用传递，如果实参是传递的是对象，则传递的是对象地址
+			object.age++;
+		}
+		var person={name:'smith',age:20};
+		obimcrement(person);
+		document.write(person.name+" -- "+person.age);
+	</script>
+</body>
+</html>

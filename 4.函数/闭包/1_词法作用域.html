@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+/*		function f1(){
+			var a=1;
+			f2();
+		}
+		function f2(){
+			return a;
+		}//	此时f2的函数作用域只有自身和全局，找不到变量a
+		f1();
+*/
+
+/*		function f1(){
+			var a=1;
+			function f2(){
+				return a;
+			}
+			return f2();
+		}
+		document.write(f1());
+*/
+
+/*		function f1(){
+			var a=1;
+			return function (){
+				return a;
+			}();
+		}
+		document.write(f1());
+*/
+		
+		var a=10;
+		function f1(){
+			a=20;
+			return function (){
+				return a;
+			};
+		}
+		a=30;
+		a=a*2;
+		document.write(f1()());
+		//返回值为20，因为局部优先于全局
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// function qc(x){
+		// 	x.sort();
+		// 	var y=[x[0]];
+		// 	for(var i=0;i<x.length;i++){
+		// 		if(x[i]!=y[y.length-1]){
+		// 			y.push(x[i]);
+		// 		}
+		// 	}
+		// 	return y;
+		// }
+
+		// var arr=[1,2,3,'4','3',5,2,'8'];
+		// var arr2=[2,3,'4',8,20];
+		// var x=arr.concat(arr2);
+		// var b=qc(x);
+		// console.log(b);
+		// var y=[];
+		// for(var i=0;i<arr.length;i++){
+		// 	for(var j=0;j<arr2.length;j++){
+		// 		if(arr[i]==arr2[j]){
+		// 			y.push(arr[i]);
+		// 		}
+		// 	}
+		// }
+		// var j=qc(y);
+		// console.log(j);
+
+		// var w=[];
+		// for(var n=0;n<b.length;n++){
+		// 	var flag=1;
+		// 	for(var m=0;m<j.length;m++){
+		// 		if(b[n]==j[m]){
+		// 			flag=0;
+		// 		}
+		// 	}
+		// 	if(flag){
+		// 		w.push(b[n]);
+		// 	}
+		// }
+		// var c=qc(w);
+		// console.log(c);
+
+		var arr=[1,2,3,5,8,9];
+		var arr2=[2,3,4,8,11,20];
+
+		var arr3=arr.concat(arr2);
+		arr3=arr3.sort();
+		var x=[];
+		var y=[];
+		console.log(arr3);
+		for(i=0;i<arr3.length;i++){
+			if(x[x.length-1]!=arr3[i]){
+				x.push(arr3[i]);
+			}else{
+				y.push(arr3[i]);
+			}
+		}
+		console.log(x);
+		console.log(y);
+
+		var z=new Array();
+		for(i=0;i<x.length;i++){
+			if(y.indexOf(x[i])==-1){
+				z.push(x[i]);
+			}
+		}
+		console.log(z);
+	</script>
+</body>
+</html>

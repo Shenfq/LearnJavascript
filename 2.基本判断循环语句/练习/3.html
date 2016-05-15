@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var s=prompt("已行驶距离(单位：k)：");
+		var t=prompt("等待时间(单位：s)：");
+		var m=0;
+		if(s<3){
+			m+=10;
+		}else{
+			var a=Math.ceil((s-3)*2);
+			m+=10+a;
+		}
+		if(t>0){
+			m+=Math.floor(t/2.5);
+		}
+		if(s>15){
+			m+=m/2;
+		}
+
+
+		document.write(m);
+	</script>
+
+</body>
+</html>

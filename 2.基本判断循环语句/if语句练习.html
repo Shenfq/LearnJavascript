@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 体重：<input type="text" /><br/>
+	身高：<input type="text" /><br/> -->
+
+	<script type="text/javascript">
+		var tall=prompt("请输入身高（单位：m）");
+		var weigth=prompt("请输入体重（单位：kg）");
+		var BMI=weigth/(tall^2);
+		if(BMI<=18.4){
+			alert("你太瘦了");
+		}else if(BMI<=23.9&&BMI>=18.5){
+			alert("正常体重");
+		}else if(BMI<=27.9&&BMI>=24){
+			alert("超重");
+		}else if(BMI>=28){
+			alert("轻度肥胖");
+		}else if(BMI>=33){
+			alert("中度肥胖");
+		}else if(BMI>=38){
+			alert("重度肥胖");
+		}else{
+			alert("你有点不正常了");
+		}
+		document.write(BMI);
+	</script>
+</body>
+</html>

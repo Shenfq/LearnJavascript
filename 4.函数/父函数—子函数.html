@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function show(){
+			function son(){
+				document.write("hello world"+"<br />");
+			}
+			son();
+		}
+		//son();    //sun is not defined
+		show ();
+
+		function cal(a,b,op){
+			function add(a,b){
+				return a+b;
+			}
+			function sub(a,b){
+				return a-b;
+			}
+			function mul(a,b){
+				return a*b;
+			}
+			function div(a,b){
+				return a/b;
+			}
+
+			switch (op){
+				case "+":
+					return add(a,b);
+				case "-":
+					return sub(a,b);
+				case "*":
+					return mul(a,b);
+				case "/":
+					return div(a,b);
+				default:
+					return false;
+					break;
+			}
+		}
+		
+		document.write(cal (9,3,"-"));
+	</script>
+</body>
+</html>

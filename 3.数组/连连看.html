@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	请输入你要删除的两个坐标点：<br/>
+	第一个坐标点： 行：<input type="text" />列：<input type="text" /><br />
+	第二个坐标点： 行：<input type="text" />列：<input type="text" /><br/>
+	<input type="button" value="删除" onclick=del()><br/>
+
+	<div id="chessboard"></div>
+	<script type="text/javascript">
+		var border='*';
+		var row=prompt("请输入行数：");
+		while(row%2!=0){
+			row=prompt("请输入行数，并且行数为偶数：");
+		}
+		var col=prompt("请输入列数：");
+		while(col%2!=0){
+			col=prompt("请输入列数并且列数为偶数：");
+		}
+
+
+		row=parseInt(row)+2;
+		col=parseInt(col)+2;
+
+
+		var chessBoard=new Array();
+		for(var i=0;i<row;i++){
+			chessBoard[i]=new Array();
+			for(var j=0;j<col;j++){
+				chessBoard[i][j]=border;
+			}
+		}
+		
+		for(var i=1;i<row-1;i++){
+			for(var j=1;j<col-1;j+=2){
+				var num=Math.ceil(Math.random()*9);
+				chessBoard[i][j]=num;
+				chessBoard[i][j+1]=num;
+			}
+		}
+
+		for(var a=0;a<row*col;a++){
+			var x1=0;
+			var y1=0;
+			var x2=0;
+			var y2=0;
+
+			while(x1==0||x1==col-1){
+				//  1---col-2
+				x1=Math.ceil(Math.random()*col)-1;
+			}
+			while(x2==0||x2==col-1){
+				x2=Math.ceil(Math.random()*col)-1;
+			}
+			while(y1==0||y1==row-1){
+				y1=Math.ceil(Math.random()*row)-1;
+			}
+			while(y2==0||y2==row-1){
+				y2=Math.ceil(Math.random()*row)-1;
+			}
+			var temp=chessBoard[y1][x1];
+			chessBoard[y1][x1]=chessBoard[y2][x2];
+			chessBoard[y2][x2]=temp
+		}
+		function show(){
+			var str="";
+			str+="=======当前棋盘如下=======<br />";
+			str+="&ensp;-&ensp;";
+			for(var i=1;i<col-1;i++){
+				str+="&ensp;"+i+"&ensp;";
+			}
+			str+="<br />";
+			for(var i=1;i<row-1;i++){
+				for(var j=0;j<col-1;j++){
+					if(j==0){
+						str+="&ensp;"+i+"&ensp;";
+					}else{
+						str+="&ensp;"+chessBoard[i][j]+"&ensp;";
+					}
+				}
+				str+="<br />";
+			}
+			str+="==========================<br />";
+			document.getElementById("chessboard").innerHTML=str;
+			
+		}
+		show();
+
+
+
+		function del(){
+			var zb=document.getElementsByTagName("input");
+			var x1=zb[0].value;
+			var y1=zb[1].value;
+			var x2=zb[2].value;
+			var y2=zb[3].value;
+			if(chessBoard[x1][y1]==chessBoard[x2][y2]){
+				if(checkline(x1,y1,x2,y2)){
+					chessBoard[x1][y1]="&ensp;";
+					chessBoard[x2][y2]="&ensp;";
+					
+				}else{
+					alert("不符合消除规定");
+				}
+				show();
+			}else{
+				alert("两个数值不相等");
+			}
+		}
+		function checkline(x1,y1,x2,y2){
+			if(x1==x2){
+				var miny=Math.min(y1,y2);
+				var maxy=Math.max(y1,y2);
+				for(var i=miny+1;i<maxy;i++){
+					if(chessBoard[x1][i]!="&ensp;"){
+						return false;
+					}
+				}
+				if(i==maxy){
+					return true;
+				}
+			}
+			if(y1==y2){
+				var minx=Math.min(x1,x2);
+				var maxx=Math.max(x1,x2);
+				for(var i=minx+1;i<maxx;i++){
+					if(chessBoard[i][y1]!="&ensp;"){
+						return false;
+					}
+				}
+				if(i==maxx){
+					return true;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

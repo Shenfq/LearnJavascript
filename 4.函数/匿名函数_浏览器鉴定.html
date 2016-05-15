@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function showTable(){
+			document.write("检测浏览器类型"+"<br />");
+			var r=2;
+			if("ActiveXObject" in window){
+				r=1;
+			}
+			if(r==1){
+				showTable=function (arr){
+					document.write("<table border='1'>");
+					for(var i=0;i<arr.length;i++){
+						document.write("<tr>");
+						document.write("<td>"+arr[i].name+"</td>"+"<td>"+arr[i].age+"</td>");
+						document.write("</tr>");
+					}
+					document.write("</table>");
+				}
+			}else if(r==2){
+				showTable=function (){
+					document.write("<ul>");
+					for(var i=0;i<arr.length;i++){
+						document.write("<li>");
+						document.write(arr[i].name+" --- "+arr[i].age);
+						document.write("</li>");
+					}
+					document.write("</ul>");
+				}
+			}
+		}
+
+		var arr=[{name:'smith',age:20},  {name:'tom',age:18}];
+		(function(){
+			showTable();
+		})();
+		showTable(arr);
+	</script>
+</body>
+</html>

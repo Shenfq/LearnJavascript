@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var m=0;
+		var a=prompt("通话时间：");
+		var b=(Math.ceil(a/60)-3)/10;
+
+		if(a>180&&a<=240){
+			m+=0.3;
+		}else if(a>240){
+			m+=b+0.2;
+		}else{
+			m+=0.2;
+		}
+		document.write(m);
+
+
+
+
+
+	</script>
+</body>
+</html>

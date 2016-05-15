@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var StrBuffer=(
+			function (){
+					var arr=[];
+					return {
+						addstr:function (val){
+							arr[arr.length]=val;
+						},
+						values:function (){
+							return arr.join(" ");
+						}
+					}
+				}	
+		)();
+
+		document.write(StrBuffer.values()+"<br />");
+
+		StrBuffer.addstr("hello");
+		StrBuffer.addstr("world");
+
+		document.write(StrBuffer.values()+"<br />");
+	</script>
+</body>
+</html>

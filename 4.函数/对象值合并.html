@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function showBookInfo(book){   //该函数用于输出对象
+			var defaultvalue={
+				name:'未知书名',
+				pages:0,
+				author:'sfq'
+			};
+			book=mergeObject(defaultvalue,book);
+			document.write("书名："+book.name+"  页数："+book.pages+"  作者："+book.author+"<br />");
+		}
+		function mergeObject(defaultvalue,realvalue){   //用于合并对象，如果不存在则给对象附上默认值
+			if(realvalue&&typeof(realvalue)=='object'){
+				for(var key in defaultvalue){
+					defaultvalue[key]=realvalue[key]||defaultvalue[key];
+
+				}
+			}
+			return defaultvalue;
+		}
+
+		var book1={name:'c语言从入门到放弃',pages:100};
+		showBookInfo(book1);
+
+
+		var stu1={name:'lala'};
+		function showStuInfo(stu){
+			var defaultvalue={
+				name:'未知姓名',
+				age:18,
+				gender:1
+			};
+			stu=mergeObject(defaultvalue,stu);
+			document.write("姓名："+stu.name+"  年龄："+stu.age+"  性别："+(stu.gender=1?'男':'女')+"<br />");
+		}
+		showStuInfo(stu1);
+	</script>
+</body>
+</html>

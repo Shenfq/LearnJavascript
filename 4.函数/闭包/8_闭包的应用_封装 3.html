@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var person=(
+			function (){
+					var name;
+					var age=18;
+					return {
+						setName:function (n){
+							name=n;
+						},
+						setAge:function (a){
+							if(a<18){
+								alert("年龄输入错误，必须在18岁以上");
+							}else{
+								age=a;
+							}
+						},
+						getName:function(){
+							return name;
+						},
+						getAge:function (){
+							return age;
+						},
+						toString:function (){
+							return "姓名："+name+"   年龄："+age;
+						}
+					}
+				}
+			
+		)();
+
+		person.setName("张三");
+		person.setAge(-25);
+		document.write(person.getName()+"<br />");
+		document.write(person.getAge()+"<br />");
+
+		document.write(person.toString()+"<br />");
+
+
+	</script>
+</body>
+</html>

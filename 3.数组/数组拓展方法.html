@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=[1,2,3,4,5,6];
+		// arr.forEach(     //可以用forEach方法来循环数组
+		// 		 // 值 索引 数组本身
+		// 	function(a,  b,  c){
+		// 		console.log(a+"--"+b+"--"+c);
+		// 	}
+		// );
+
+		// var arr2=arr.map(function(x){ return x*2 });     //数组的映射
+		// console.log(arr2);
+
+		// var a=arr.some(function(a){return a>3});     //相当于逻辑或
+		// var b=arr.every(function(a){return a>3});	//相当于逻辑与
+		// console.log(a+"-------"+b);
+
+
+		var c=arr.filter(function(x, index) {       //过滤  返回能通过过滤的值
+			return x>2;
+		});
+		console.log(c);
+
+
+
+
+		var arr0=[1,2,3,4];		//返回值 当前值 当前值的索引
+		var a=arr0.reduce(function(pre   ,cur   ,index){
+			document.write(index+"----"+pre+"----"+cur+"<br>");
+			return pre+cur;
+		});
+		document.write(a);
+
+	</script>
+</body>
+</html>
