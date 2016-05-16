@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/**
+		 *
+		 * ━━━━━━神兽出没━━━━━━
+		 * 　　　┏┓　　　┏┓
+		 * 　　┏┛┻━━━┛┻┓
+		 * 　　┃　　　　　　　┃
+		 * 　　┃　　　━　　　┃
+		 * 　　┃　┳┛　┗┳　┃
+		 * 　　┃　　　　　　　┃
+		 * 　　┃　　　┻　　　┃
+		 * 　　┃　　　　　　　┃
+		 * 　　┗━┓　　　┏━┛Code is far away from bug with the animal protecting
+		 * 　　　　┃　　　┃    神兽保佑,代码无bug
+		 * 　　　　┃　　　┃
+		 * 　　　　┃　　　┗━━━┓
+		 * 　　　　┃　　　　　　　┣┓
+		 * 　　　　┃　　　　　　　┏┛
+		 * 　　　　┗┓┓┏━┳┓┏┛
+		 * 　　　　　┃┫┫　┃┫┫
+		 * 　　　　　┗┻┛　┗┻┛
+		 *
+		 * ━━━━━━感觉萌萌哒━━━━━━
+		 */
+		function Circle(r){
+			this.r=r;
+		}
+		Circle.PI=3.1415926;	//定义一个静态变量
+		Circle.prototype={
+			perimeter:function(){
+				return 2*this.r*Circle.PI;
+			},
+			area:function(){
+				return this.r*this.r*Circle.PI;
+			}
+		}
+
+		var c=new Circle(4);
+		document.write("半径为"+c.r+"的圆的周长为"+c.perimeter()+"<br />");
+		document.write("半径为"+c.r+"的圆的面积为"+c.area()+"<br />");
+	</script>
+</body>
+</html>
