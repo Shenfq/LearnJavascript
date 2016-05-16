@@ -29,17 +29,36 @@
 		 *
 		 * ━━━━━━感觉萌萌哒━━━━━━
 		 */
-		 function Person(name,age,sex){
+		 function Person(name,age){
 		 	this.name=name;
 		 	this.age=age;
-		 	this.sex=sex
 		 }
+		 Person.prototype.sayHello=function(name){
+		 	document.write("hello  "+name+"<br />");
+		 }
+		 Person.prototype={
+		 	sayBye:function(name){
+		 		document.write("bye  "+name+"<br />");
+		 	},
+		 	eat:function(foods){
+		 		document.write(this.name+"  eat  "+foods+"<br />");
+		 	},
+		 	sayHello:function(name){
+		 	document.write("hello  "+name+"<br />");
+		 }
+		 };
 
-		 var zs=new Person('张三',23,'man');
-		 document.write(zs+"<br />");
-		 document.write(zs.name+"---"+zs.age+"---"+zs.sex);
+		 var p1=new Person('zs',21);
+		 p1.sayHello('smith');
+		 p1.sayBye('smith');
 
 
+		 Person.prototype.grade='一年级';
+		 document.write(p1.grade+"<br />");
+
+		 var p2=new Person('aa',45);
+		 document.write(p1.grade+"<br />");
+		 
 	</script>
 </body>
 </html>

@@ -32,6 +32,13 @@
 		 Object.sayHi=function (){
 		 	alert('hello');
 		 }
+		 Object.sayHi();
+
+		 Object.prototype.sayHi=function (){
+		 	alert('Hello');
+		 }
+		 var sayhello=new Object();
+		 sayhello.sayHi();
 
 
 	</script>

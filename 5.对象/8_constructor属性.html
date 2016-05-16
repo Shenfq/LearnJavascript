@@ -36,9 +36,11 @@
 		 }
 
 		 var zs=new Person('张三',23,'man');
-		 document.write(zs+"<br />");
-		 document.write(zs.name+"---"+zs.age+"---"+zs.sex);
-
+		 document.write(zs.constructor+"<br />");
+		 var p1=new zs.constructor('lis',22,'man');
+		 document.write(p1.name+"<br />");
+		 document.write((zs.constructor==Person)+"<br />");
+		 document.write((zs.constructor==Object)+"<br />");
 
 	</script>
 </body>

@@ -29,17 +29,26 @@
 		 *
 		 * ━━━━━━感觉萌萌哒━━━━━━
 		 */
-		 function Person(name,age,sex){
+		 function Person(name,age){
 		 	this.name=name;
 		 	this.age=age;
-		 	this.sex=sex
 		 }
+		 
+		 Person.prototype={
+		 	sayHello:function(name){
+		 		document.write(this.name+"say  hello  to"+name+"<br />");
+		 	},
+		 	sayBye:function(name){
+		 		document.write(this.name+"say  bye  to"+name+"<br />");
+		 	},
+		 };
+		 var p1=new Person('张三',23);
+		 p1.sayHello('smith');
 
-		 var zs=new Person('张三',23,'man');
-		 document.write(zs+"<br />");
-		 document.write(zs.name+"---"+zs.age+"---"+zs.sex);
-
-
+		 Person.prototype.sayHello=function(name){
+		 	document.write(this.name+"说你好， 对"+name+"<br />");
+		 }
+		 p1.sayHello('smith');
 	</script>
 </body>
 </html>
