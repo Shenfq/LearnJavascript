@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Animal(group,gender){
+			//这样可以完成对对象的初始化
+			this.group=group;
+			this.gender=gender;
+		}
+		Animal.prototype.showInfo=function (){
+			document.write("类别:"+this.group+"  性别:"+this.gender+"<br />");
+		}
+
+		//Bird.prototype=nwe Animal(group,gender);
+		function Bird (group,gender){
+			//为了完成使用参数来创建Animal对象，可以使用call（）函数
+			//object.call(要调用构造函数的对象,[实参值1，实参值2，......]);
+			Animal.call(this,group,gender);
+		}
+		Bird.prototype=new Animal();
+		Bird.prototype.constructor=Bird;
+
+		var b1=new Bird("鸟类","雌");
+		b1.showInfo();
+		console.log(b1.constructor);
+	</script>
+</body>
+</html>

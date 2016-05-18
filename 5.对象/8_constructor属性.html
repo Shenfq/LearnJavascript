@@ -37,6 +37,11 @@
 
 		 var zs=new Person('张三',23,'man');
 		 document.write(zs.constructor+"<br />");
+		 console.log(zs.__proto__);
+		 console.log(Person.prototype);
+		 //console.log(Person.constructor);
+		 //console.log(Person.__proto__);
+		 
 		 var p1=new zs.constructor('lis',22,'man');
 		 document.write(p1.name+"<br />");
 		 document.write((zs.constructor==Person)+"<br />");

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /*
+        //1.
+        //constructor属性始终指向创建当前对象的构造函数。
+        var arr=[1,2,3];
+        console.log(arr.constructor); //输出 function Array(){}
+        var a={};
+        console.log(a.constructor);//输出 function Object(){}
+        var bool=false;
+        console.log(bool.constructor);//输出 function Boolean(){}
+        var name="hello";
+        console.log(name.constructor);//输出 function String(){}
+        var sayName=function(){}
+        console.log(sayName.constructor)// 输出 function Function(){} 
+        //接下来通过构造函数创建instance
+        function A(){}
+        var a=new A();
+        console.log(a.constructor); //输出 function A(){}
+
+
+
+        //2.
+        //prototype是每个函数对象都具有的属性，被称为原型对象，而__proto__属性才是每个对象才有的属性。一旦原型对象被赋予属性和方法,那么由相应的构造函数创建的实例会继承prototype上的属性和方法
+        //constructor : A     构造方法
+        //instance : a        实例
+        function A(){}
+        var a=new A();
+        A.prototype.name="xl";
+        A.prototype.sayName=function(){
+            console.log(this.name);
+        }
+        console.log(a.name);// "xl"
+        a.sayName();// "xl"
+        //那么由constructor创建的instance会继承prototype上的属性和方法
+
+
+        //3.
+        //每个函数都有prototype属性，而这个prototype的constructor属性会指向这个函数。
+         function Person(name){
+            this.name=name;
+        }
+        Person.prototype.sayName=function(){
+            console.log(this.name);
+        }
+        
+        var person=new Person("xl");
+        
+        console.log(person.constructor); //输出 function Person(){}
+        console.log(Person.prototype.constructor);//输出 function Person(){}
+        console.log(Person.constructor); //输出 function Function(){}
+
+        //如果我们重写(重新定义)这个Person.prototype属性，那么constructor属性的指向就会发生改变了。
+         Person.prototype={
+            sayName:function(){
+                console.log(this.name);
+            }
+        }
+        console.log(person.constructor==Person); //输出 false (这里为什么会输出false后面会讲)
+        console.log(person.constructor); 
+        console.log(Person.constructor==Person); //输出 false
+        console.log(Person.constructor); 
+        console.log(Person.prototype.constructor);// 输出 function Object(){}  
+        //这里为什么会输出function Object(){}
+        //还记得之前说过constructor属性始终指向创建这个对象的构造函数吗？
+        //那么我如何能将constructor属性再次指向Person呢？
+        Person.prototype.constructor=Person;
+    */
+
+    /*
+        //由constructor创建的每个instance都有个__proto__属性，它指向constructor.prototype。那么constrcutor.prototype上定义的属性和方法都会被instance所继承.
+        function Person(name){
+            this.name=name;
+        }
+        Person.prototype.sayName=function(){
+            console.log(this.name);
+        }
+        
+        var personOne=new Person("a");
+        var personTwo=new Person("b");
+        
+        personOne.sayName(); // 输出  "a"
+        personTwo.sayName(); //输出 "b"
+        
+        console.log(personOne.__proto__==Person.prototype); // true
+        console.log(personTwo.__proto__==Person.prototype); // true
+        
+        console.log(personOne.constructor==Person); //true
+        console.log(personTwo.constructor==Person); //true
+        console.log(Person.prototype.constructor==Person); //true
+        
+        console.log(personOne.__proto__); 
+        console.log(personOne.constructor); 
+        console.log(Person.constructor); //function Function(){}
+        console.log(Person.__proto__);
+        console.log(Person.__proto__.__proto__); // Object{} 
+    */
+    function Person(name){
+        this.name=name;
+    }
+    Person.prototype.sayhi=function (name){
+        alert("hi"+name);
+    }
+
+    console.log(Person.__proto__);
+    console.log(Person.prototype);
+    console.log(Person.prototype.constructor);
+    console.log(Person.constructor);
+    console.log(Function.prototype.constructor);
+    var p1=new Person("zs");
+
+    console.log(p1.__proto__);
+    //console.log(p1.prototype);
+    console.log(p1.constructor);
+    </script>
+</body>
+</html>

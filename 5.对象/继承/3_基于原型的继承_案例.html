@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person(name,sal){
+			this.name=name;
+			this.sal=sal;
+		}
+		Person.prototype={
+			toString:function(){
+				return "姓名："+this.name+"   工资："+this.sal;
+			},
+			work:function(){
+				document.write(this.name+"开始工作"+"<br />");
+			}
+		}
+
+		function Emp(name,sal,no){
+			Person.call(this,name,sal);
+			this.no=no;
+		}
+		Emp.prototype=new Person();
+		Emp.prototype.constructor=Emp;
+		Emp.prototype.toString=function(){
+				return "姓名："+this.name+"   工资："+this.sal+"  编号："+this.no;
+		}
+
+		var e1=new Emp('张三',3000,1);
+		document.write(e1.toString()+"<br />");
+
+
+		function Manager(name,sal,allowance){
+			Person.call(this,name,sal);
+			this.allowance=allowance;
+		}
+		Manager.prototype=new Person();
+		Manager.prototype.constructor=Manager;
+		Manager.prototype.toString=function(){
+				return "姓名："+this.name+"   工资："+this.sal+"  补助："+this.allowance;
+		}
+		var m1=new Manager("李四",6000,1000);
+		document.write(m1.toString()+"<br />")
+	</script>
+</body>
+</html>
