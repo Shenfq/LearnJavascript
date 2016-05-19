@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var str="2016-05-19";
+		var reg=/(\d-)+/g;
+		str.replace(reg,function($0){
+			document.write($0+"<br />");//6-   5-
+		})
+
+		document.write("<hr />");
+
+		var str="2016-05-19";
+		var reg=/(\d+)-/g;
+		str.replace(reg,function($0,$1){
+			document.write($0+"<br />");  //2016-   05-
+			document.write($1+"<br />");  //2016    05
+		})
+
+		document.write("<hr />");
+
+		var str="2016-05-19";
+		var reg=/(\d+)(-)/g;
+		str.replace(reg,function($0,$1,$2){
+			document.write($0+"<br />"); //2016-   05-
+			document.write($1+"<br />"); //2016    05
+			document.write($2+"<br />"); //-       -
+		})
+
+		document.write("<hr />");
+
+		var str="2016-05-19";
+		var reg=/(\d+)(-)/g;
+		var str=str.replace(reg,function($0,$1,$2){
+			return $1+".";
+		})
+		document.write(str+"<br />");
+
+		document.write("<hr />");
+
+		var str="abcdef";
+		var reg=/(a)(b)(c)/;
+
+		document.write(str.match(reg));  //会返回
+	</script>
+</body>
+</html>

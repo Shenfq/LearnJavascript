@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas height="600px" width="500px" id="canvas" />
+	<script type="text/javascript">
+		var ca=document.getElementById("canvas");
+		var ctx=ca.getContext('2d');		 //获取画布的环境（上下文）
+		ctx.strokeStyle='rgb(255,0,0)';      //设置画笔的颜色
+		ctx.beginPath();				//开始绘制  记录路径
+		ctx.moveTo(20, 40);				//开始画图的坐标点
+		ctx.lineTo(150, 360);			//终点
+		ctx.closePath();			//关闭记录
+		ctx.stroke();				//显示
+	</script>
+</body>
+</html>

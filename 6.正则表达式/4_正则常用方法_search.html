@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//test,search,match,replace
+		//字符串.search(regexp)    字符串的搜索   返回出现的位置
+		var reg=/d/;
+		var str="abcdefg";
+		document.write(str.search(reg)+"<br />"); //3
+
+		var reg=/bcde/;
+		document.write(str.search(reg)+"<br />"); //1
+
+		var reg=/D/i;
+		document.write(str.search(reg)+"<br />"); //3
+	</script>
+</body>
+</html>

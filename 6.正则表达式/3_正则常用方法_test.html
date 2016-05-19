@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//test,search,match,replace
+		//regext.text(字符串)   字符串的判断    返回真假
+		var reg=/a/;
+		var str="abcdef";
+		console.log(reg.test(str));  //返回true
+		
+		//   \s空格
+		//   \S非空格
+		//   \w字符   字母数字下划线
+		//   \W非字符
+		//   \d数字
+		//   \D非数字
+		var reg=/\D/;
+		var str="12,3456789";
+		if(reg.test(str)){
+			alert("不全是数字");
+		}else{
+			alert("全是数字");
+		}
+	</script>
+</body>
+</html>

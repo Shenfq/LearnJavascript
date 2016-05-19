@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		textarea{
+			width:500px;
+			height: 300px;
+		}
+	</style>
+
+	
+</head>
+<body>
+	<textarea id="first"></textarea><br />
+	<input type="button" value="过滤" onClick="filter()" /><br />
+	<textarea id="later"></textarea>
+
+
+	<script type="text/javascript">
+		function filter(){
+			var str=document.getElementById("first").value;
+			//alert(str);
+			var reg=/他妈|你他妈|人妖/g;
+			str=str.replace(reg,function(reg){
+				var result="";
+				for(var i=0;i<reg.length;i++){
+					result+="*";
+				}
+				return result;
+			});
+			document.getElementById("later").value=str;
+		}
+	</script>
+</body>
+</html>

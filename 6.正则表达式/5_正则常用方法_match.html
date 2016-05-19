@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//test,search,match,replace
+		//字符串.match(regexp)    字符串匹配     返回数组
+		var str="a0b123c453de5fg7897h";
+		var reg=/\d/;
+		document.write(str.match(reg)+"<br />");   //0
+
+		var reg=new RegExp("\\d","g");   //g表示全局匹配    字符串里面要用\\表示\，因为会进行转义
+		document.write(str.match(reg)+"<br />");   //0,1,2,3,4,5,3,5,7,8,9,7
+
+		var reg=/\d\d/g;
+		document.write(str.match(reg)+"<br />");   //12,45,78,97
+
+		var reg=/\d+/g;   //+表示\d至少出现一次或者无限次
+		document.write(str.match(reg)+"<br />");   //0,123,453,5,7897
+
+	</script>
+</body>
+</html>

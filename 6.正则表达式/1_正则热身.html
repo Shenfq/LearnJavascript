@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var str="a1b23c4565de2fg987";
+		var arr=str.split("");
+		var arr2=[];
+		for(var i=0;i<arr.length;i++){
+			if(isNaN(arr[i])){
+				delete(arr[i]);
+			}else{
+				arr2.push(arr[i]);
+			}
+		}
+		var str2=arr2.join("");
+		document.write(str2+"<br />");
+
+		//运用正则表达式
+		function findNumByReg(str){
+			return str.match(/\d/g);
+		}
+		var str3=findNumByReg(str).join("");
+		document.write(str3);
+	</script>
+</body>
+</html>

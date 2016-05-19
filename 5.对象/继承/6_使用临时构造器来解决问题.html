@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Shape(){}
+
+		Shape.prototype.name="形状";
+		Shape.prototype.toString=function(){return this.name};
+
+		function extend(Child,Parent){
+			var F=function(){};
+			F.prototype=Parent.prototype;
+			Child.prototype=new F();
+			Child.prototype.constructor=Child;
+		}
+
+		function TwoDShape(){}
+		extend(TwoDShape,Shape);
+		TwoDShape.prototype.name="2D形状";
+
+		function Triangle(bottom,height){
+			this.bottom=bottom;
+			this.height=height;
+		}
+		extend(Triangle,TwoDShape);
+		Triangle.prototype.name="三角形";
+		Triangle.prototype.getArea=function(){
+			return this.bottom*this.height/2;
+		}
+		var a=new Triangle(3,4);
+
+		document.write(a.getArea()+"<br />");
+
+	</script>
+</body>
+</html>
