@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+</head>
+
+<body>
+	<div id="mydiv">
+		你吃不吃饼干
+		<p>吃了你就是我老婆</p>
+		<div>不吃你就是我女朋友</div>
+		<font size="6">不吃算了</font>
+	</div>
+	<script type="text/javascript">
+		//严禁在网页DOM没有创建完之前使用DOM
+		var mydiv=document.getElementById("mydiv");//节点
+		//取得第二个div
+		var secdiv=document.getElementsByTagName("div")[1];
+		//取得向上的兄弟节点
+		console.log( "节点名："+secdiv.previousSibling.nodeName+",节点类型："+secdiv.previousSibling.nodeType+",节点值"+secdiv.previousSibling.nodeValue );
+		//取得向下的兄弟节点
+		console.log( "节点名："+secdiv.nextSibling.nodeName+",节点类型："+secdiv.nextSibling.nodeType+",节点值"+secdiv.nextSibling.nodeValue  );
+
+		//封装
+		function getPreSbl(n){
+			var x=n.previousSibling;
+			while(x&&x.nodeType!=1){
+				x=x.previousSibling;
+			}
+			return x;
+		}
+		function getNextSbl(n){
+			var x=n.nextSibling;
+			while(x&&x.nodeType!=1){
+				x=x.nextSibling;
+			}
+			return x;
+		}
+		//取得向上的兄弟元素节点
+		console.log( "节点名："+getPreSbl(secdiv).nodeName+",节点类型："+getPreSbl(secdiv).nodeType+",节点值"+getPreSbl(secdiv).nodeValue );
+		//取得向下的兄弟元素节点
+		console.log( "节点名："+getNextSbl(secdiv).nodeName+",节点类型："+getNextSbl(secdiv).nodeType+",节点值"+getNextSbl(secdiv).nodeValue  );
+	</script>
+</body>
+</html>

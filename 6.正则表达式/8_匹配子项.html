@@ -6,6 +6,8 @@
 </head>
 <body>
 	<script type="text/javascript">
+
+		//匹配子项 （）
 		var str="2016-05-19";
 		var reg=/(\d-)+/g;
 		str.replace(reg,function($0){
@@ -45,7 +47,7 @@
 		var str="abcdef";
 		var reg=/(a)(b)(c)/;
 
-		document.write(str.match(reg));  //会返回
+		document.write(str.match(reg));  //会返回整体  和部分
 	</script>
 </body>
 </html>

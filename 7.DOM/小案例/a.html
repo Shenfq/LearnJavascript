@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM查找访问节点</title>
+	<style type="text/css">
+		img{
+			width:200px;
+			height:200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<img src="fruit1.jpg" alt="水果1" id="fruit1" />
+		<img src="fruit2.jpg" alt="水果2" id="fruit2" />
+		<h1 id="like">选择你喜欢的水果：</h1>
+		<form id="form1">
+			<input name="enjoy" type="checkbox" value="apple" />苹果
+			<input name="enjoy" type="checkbox" value="banana" />香蕉
+			<input name="enjoy" type="checkbox" value="grape" />葡萄
+			<input name="enjoy" type="checkbox" value="pear" />梨
+			<input name="enjoy" type="checkbox" value="watermelon" />西瓜
+		</form>
+		<form id="form2">
+			<input name="btn" type="button" value="显示图片1路径" onclick="show()" /><br />
+			<input name="btn" type="button" value="查看喜欢的水果" onclick="look()" /><br />
+			<input name="btn" type="button" value="改变图片2" onclick="change()" /><br />
+			<input name="btn" type="button" value="点击创建图片" onclick="creatImg()" /><br />
+			<input name="btn" type="button" value="全选" onclick="allOk()" /><br />
+			<input name="btn" type="button" value="全不选" onclick="noOk()" /><br />
+			<input name="btn" type="button" value="反选" onclick="counterOk()" /><br />
+		</form>
+		
+		
+	</div>
+
+	<script type="text/javascript">
+		function show(){
+			alert(document.getElementById("fruit1").attributes[0].nodeValue);  //显示相对路径
+			//alert(document.getElementById("fruit1").src);   //会显示绝对路径
+		}
+		function look(){
+			var inputList=document.getElementsByName("enjoy");
+			for(var i=0;i<inputList.length;i++){
+				if(inputList[i].checked==true){
+					alert(inputList[i].value);
+				}
+			}
+		}
+
+		function change(){
+			var img=document.getElementById("fruit2");
+			img.src="fruit4.jpg";
+		}
+
+		function creatImg(){
+			var img=document.createElement("img");
+			img.setAttribute("src", "fruit3.jpg");
+			img.setAttribute("title", "新创建的图片");
+			document.getElementById("form2").appendChild(img);
+		}
+
+		function allOk(){
+			var oFrom1=document.getElementById("form1");
+			var aCh=oFrom1.getElementsByTagName("input");
+			for(var i=0;i<aCh.length;i++){
+				aCh[i].checked=true;
+			}
+		}
+		function noOk(){
+			var oFrom1=document.getElementById("form1");
+			var aCh=oFrom1.getElementsByTagName("input");
+			for(var i=0;i<aCh.length;i++){
+				aCh[i].checked=false;
+			}
+		}
+		function counterOk(){
+			var oFrom1=document.getElementById("form1");
+			var aCh=oFrom1.getElementsByTagName("input");
+			for(var i=0;i<aCh.length;i++){
+				if(aCh[i].checked==true){
+					aCh[i].checked=false;
+				}else{
+					aCh[i].checked=true;
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="str"><br />
+	<input type="button" value="去掉空格" onclick="check()"><br />
+	<input type="text" id="str2">
+	<script type="text/javascript">
+		function check (){
+			var str=document.getElementById("str").value;
+			var reg=/^\s+|\s+$/g;    //去掉前后空格
+			document.getElementById("str2").value=str.replace(reg,"");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<ul id="con">
+<li id="lesson1">javascript
+  <ul> 
+      <li id="tcon">基础语法</li>
+      <li>流程控制语句</li>
+      <li>函数</li>
+      <li>事件</li>
+      <li>DOM</li>
+  </ul>
+</li>
+<li id="lesson2">nodejs</li>
+<li id="lesson3">ps</li>
+<li id="lesson4">HTML/CSS 
+  <ul>
+    <li>文字</li>
+    <li>段落</li>
+    <li>表单</li>
+    <li>表格</li>  
+  </ul> 
+</li></ul>  
+<script  type="text/javascript">    
+ 
+  var mylist = document.getElementById("tcon"); 
+  //请输出   函数      htmlcss     表格
+  function getPreSbl(n){
+      var x=n.previousSibling;
+      while(x&&x.nodeType!=1){
+        x=x.previousSibling;
+      }
+      return x;
+  }
+  function getNextSbl(n){
+      var x=n.nextSibling;
+      while(x&&x.nodeType!=1){
+        x=x.nextSibling;
+      }
+      return x;
+  }
+  var func=getNextSbl(getNextSbl(mylist));
+  document.write(func.firstChild.nodeValue+"<br />");
+  var hc=getNextSbl(getNextSbl(getNextSbl(mylist.parentNode.parentNode)));
+  document.write(hc.firstChild.nodeValue+"<br />");
+  function getChild(n,num){
+    var Child=[];
+    for(var i=0;i<n.childNodes.length;i++){
+      if(n.childNodes[i].nodeType==1){
+        Child.push(n.childNodes[i]);
+      }
+    }
+    var num=num-1;
+    return Child[num];
+  }
+  var tab=getChild(hc.childNodes[1],2);
+  //var tab=hc.childNodes[1].childNodes[5];
+  document.write(tab.firstChild.nodeValue+"<br />");
+</script>   
+
+</body>
+</html>

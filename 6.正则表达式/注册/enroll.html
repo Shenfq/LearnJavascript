@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<body>
+	<div class="top0"></div>
+	<form action="#" method="post" class="main">
+		<div class="main_top">会员信息 :</div>
+
+		<table>
+			<tr>
+				<td><i></i></td>
+				<td>会&nbsp;&nbsp;员&nbsp;&nbsp;名 :</td>
+				<td><input class="inputa" type="text" name="user" onblur="checkusername(this,'myusername')"></td>
+				<td><span id="myusername">会员名以字母或汉字开头，由3-18位的数字、字母、下划线、汉字、组成</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>真实姓名 :</td>
+				<td><input class="inputa" type="text" name="name" onblur="checkname(this,'myname')"></td>
+				<td><span id="myname">请输入您的真实姓名</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码 :</td>
+				<td><input id="orgpwd" class="inputa" type="password" name="pwd" onblur="checkpwd(this,'mypwd')"></td>
+				<td><span id="mypwd">密码由6-16位的数字、字母、下划线组成</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>重复密码 :</td>
+				<td><input class="inputa" type="password" name="pwda" onblur="checkpwda(this,'mypwda','orgpwd')"></td>
+				<td><span id="mypwda">两次输入的密码必须一致</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别 :</td>
+				<td>
+					<input type="radio" name="gender" value=male>男&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="gender" value=female>女
+				</td>
+				<td><span>选择您的性别</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>证&nbsp;&nbsp;件&nbsp;&nbsp;号 :</td>
+				<td><input class="inputa" type="text" name="idnum" onblur="checkidnum(this,'myidnum')"></td>
+				<td><span id="myidnum">请输入您的有效证件号</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>E-mail :</td>
+				<td><input class="inputa" type="text" name="email" onblur="checkemail(this,'myemail')"></td>
+				<td><span id="myemail">请填写常用的电子邮件</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>联系方式 :</td>
+				<td><input class="inputa" type="text" name="phonenum" onblur="checkphonenum(this,'myphonenum')"></td>
+				<td><span id="myphonenum">请填写常用的联系方式</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>省&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份 :</td>
+				<td>
+					<select name="province">
+						<option value="#" checked="yes">--请选择您所在省份--</option>
+						<option value="hunan">湖南</option>
+					</select>
+				</td>
+				<td><span>请选择您所在省份</span></td>
+			</tr>
+			<tr>
+				<td><i></i></td>
+				<td>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市 :</td>
+				<td>
+					<select name="city">
+						<option value="#" checked="yes">--请选择您所在城市--</option>
+						<option value="changsha">长沙</option>
+						<option value="hengyang">衡阳</option>
+					</select>
+				</td>
+				<td><span>请选择您所在城市</span></td>
+			</tr>
+		
+		</table>
+
+		<div class="main_bottom"></div>
+
+		<input type="submit" class="mybutton" value="" />
+	</form>
+	<script type="text/javascript" src="reg.js"></script>
+</body>
+</html>

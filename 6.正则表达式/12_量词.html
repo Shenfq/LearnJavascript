@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="qq">
+	<input type="button" value="查询" onclick="check()">
+
+	<script type="text/javascript">
+		//量词 (只针对前面的一位正则) {3}:指出现三次  {4,8}指出现4-8次  {4,}指出现至少4次  {,4}指出现最多4次
+		//   +  最少出现1次  =  {1,}
+		//   ?  出现0次或一次  =   {0,1}
+		//   *  出现任意次，至少出现0次   =  {0,}
+
+
+		//正则的开始结束：   
+		//^ 如果放在[]里面，指非;如果放在正则的最前面，就指开始
+		//$ 如果放在正则的最后面，就指结束
+		function check (){
+			var str=document.getElementById("qq").value;
+			var reg=/^[1-9]\d{4,10}$/;
+			if(reg.test(str)){
+				alert("是QQ号");
+			}else{
+				alert("不是QQ号");
+			}
+		}
+	</script>
+</body>
+</html>

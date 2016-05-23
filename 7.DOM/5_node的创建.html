@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+</head>
+
+<body>
+	<div id="d1">
+		<p id="p1">This is a paragraph.</p>
+		<p id="p2">This is another paragraph.</p>
+	</div>
+
+	<script>
+		var para=document.createElement("p");
+		var node=document.createTextNode("This is new.");
+		para.appendChild(node);
+		var element=document.getElementById("d1");
+		element.appendChild(para);
+
+
+		var img=document.createElement("img");  //创建html标签
+		img.setAttribute("src", "DOMtree.gif");	//添加标签属性
+		img.setAttribute("titile","图片");
+		//document.body.appendChild(img);	 //将创建的标签插入到html的script标签后面
+		//element.appendChild(img);  //将创建的标签插入到html中的div标签内
+		document.body.insertBefore(img,element);   //insertBefore() 方法可在已有的子节点前插入一个新的子节点。
+
+	</script>
+</body>
+</html>

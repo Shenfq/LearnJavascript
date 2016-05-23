@@ -18,13 +18,26 @@
 		//   \W非字符
 		//   \d数字
 		//   \D非数字
+		//   .  在js正则指任意字符
+		//   \.  表示.
+		//   \b  独立的部分，包括开始，结束和空格
+		//	 \B	 非独立的部分
 		var reg=/\D/;
 		var str="12,3456789";
 		if(reg.test(str)){
-			alert("不全是数字");
+			document.write("不全是数字");
 		}else{
-			alert("全是数字");
+			document.write("全是数字");
 		}
+
+
+		var str="a.b";
+		var reg=/.+/;
+		console.log(reg.test(str));
+
+		var str="ab cde";
+		var reg=/\bab/g;
+		console.log(reg.test(str));
 	</script>
 </body>
 </html>
