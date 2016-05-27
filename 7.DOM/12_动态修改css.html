@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<style type="text/css">
+		div{
+			width: 400px;
+			height: 200px;
+			background-color:red;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="mydiv"></div>	
+	
+	<script type="text/javascript">
+		var mydiv=document.getElementById("mydiv");
+		console.log("width:"+mydiv.style.width);
+
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return window.getComputedStyle(obj,false)[attr];
+			}
+		}
+		alert(  "width:" + getStyle(mydiv,"width")  );
+	</script>
+</body>
+</html>

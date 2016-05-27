@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<style type="text/css">
+		.title{
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+
+	<table border="1px" cellspacing="0" width="300">
+		<tr>
+			<td>书名</td>
+			<td>价格</td>
+		</tr>
+		<tr>
+			<td>看得见风景的房间</td>
+			<td>￥30.00</td>
+		</tr>
+		<tr>
+			<td>60个瞬间</td>
+			<td>￥32.00</td>
+		</tr>
+	</table>
+	<input type="button" value="增加一行" onclick="addrow()">
+	<input type="button" value="删除第2行" onclick="delrow()">
+	<input type="button" value="修改标题" onclick="renew()">
+
+	<script>
+		var oTable=document.getElementsByTagName("table")[0];
+		function addrow(){
+			var title=prompt("书名");
+			var money=prompt("价格");
+			var newrow=oTable.insertRow(oTable.rows.length);
+			newrow.insertCell(0);	//添加列
+			newrow.cells[0].appendChild(document.createTextNode(title));
+			newrow.insertCell(1);	//添加列
+			newrow.cells[1].innerHTML=money;
+		}
+		function delrow(){
+			oTable.deleteRow(1);
+		}
+		function renew(){
+			var row1=oTable.rows[0];
+			row1.className="title";
+		}
+	</script>
+</body>
+</html>

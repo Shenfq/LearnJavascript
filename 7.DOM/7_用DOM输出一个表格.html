@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+</head>
+
+<body>
+	<script>
+		var table=document.createElement('table');
+		table.setAttribute("border","1px");
+		table.setAttribute("width","300px");
+		table.setAttribute("cellspacing","0");
+		//table.setAttribute("cellpadding","0");
+		var arr=[["张三","19","男"],["李四","22","女"],["王五","20","男"],["赵六","21","女"]];
+		var str="";
+		for(var i=0;i<arr.length;i++){
+			str+="<tr>";
+			for(var j=0;j<arr[i].length;j++){
+				str+="<td>"+arr[i][j]+"</td>";
+			}
+			str+="</tr>";
+		}
+		table.innerHTML=str;
+		document.body.appendChild(table);
+	</script>
+</body>
+</html>

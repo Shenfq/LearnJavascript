@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<style type="text/css">
+		p{
+			color:pink;
+		}
+	</style>
+</head>
+
+<body style="background-color:#666;">
+	<div id="mydiv" style="width: 400px;height: 400px;background-color:blue; "">	
+	</div>
+	<p>测试文字</p>
+	<input type="button" value="换背景" onclick="changebgcolor()">
+	<script type="text/javascript">
+		function changebgcolor(){
+			mydiv.style.backgroundColor="red";
+			var color0=parseInt(Math.random()*1000);
+			color0.toString(16);
+			document.body.style.backgroundColor="#"+color0;
+			//alert(document.getElementsByTagName("p")[0].style.color);
+		}
+	</script>
+</body>
+</html>

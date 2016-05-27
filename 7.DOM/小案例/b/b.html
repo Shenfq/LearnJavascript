@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0 auto;
+		}
+		#box0{
+			width: 90%;
+			margin-top:30px; 
+		}
+		#box0 li{
+			list-style: none;
+			float: left;
+			width: 19.8%;
+			border: 1px solid #666;
+			text-align: center;
+			height: 25px;
+			line-height: 25px;
+		}
+		#myimg{
+			float: left;
+			height: 780px;
+			width:100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="box0">
+		<ul>
+			<li>疯狂动物城——狮子</li>
+			<li>疯狂动物城——树懒</li>
+			<li>疯狂动物城——兔子</li>
+			<li>疯狂动物城——狐狸</li>
+			<li>疯狂动物城——仓鼠</li>
+		</ul>
+		<div id="myimg" style="background:url(1.jpg);background-size:100%;"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var ali=document.getElementsByTagName('li');
+	var odiv=document.getElementById("myimg");
+	for(var i=0;i<ali.length;i++){
+		ali[i].index=i;
+		ali[i].onclick=function (){			
+			odiv.style.background="url("+(this.index+1)+".jpg)";
+			odiv.style.backgroundSize="100%";
+		}
+	}
+</script>
+</html>

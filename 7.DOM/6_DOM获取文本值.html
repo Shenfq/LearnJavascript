@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+</head>
+
+<body>
+	<input type="text" name="user" value="abcde" />
+	<div>
+		<p>测试文字</p>哈哈哈
+	</div>
+	<div></div>
+	<div></div>
+	<script>
+		var oInput=document.getElementsByName("user")[0];
+		console.log(oInput.value);
+		var oDiv=document.getElementsByTagName('div')[0];
+		console.log(oDiv.innerHTML);	//会取出里面的标签、文字
+		console.log(oDiv.innerText);	//只会取出里面的文字
+		console.log(oDiv.outerHTML);	//会取出外面和里面的标签、文字
+		console.log(oDiv.outerText);    //只会取出里面的文字
+		var oDiv2=document.getElementsByTagName('div')[1];
+		oDiv2.innerHTML="<font color='red'>测试文字2</font>";
+		var oDiv3=document.getElementsByTagName('div')[2];
+		oDiv3.innerText="<font color='red'>测试文字2</font>";
+	</script>
+</body>
+</html>

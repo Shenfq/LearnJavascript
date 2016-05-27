@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul{
+			list-style:none;
+		}
+		#li1{
+			background: url(images/fold.gif) no-repeat;
+			padding-left:20px; 
+		}
+		#li2{
+			background: url(images/fclose.gif) no-repeat;
+			padding-left:20px; 
+		}
+		#li20{
+			background: url(images/fclose.gif) no-repeat;
+			padding-left:20px; 
+		}
+		#li21{
+			background: url(images/fclose.gif) no-repeat;
+			padding-left:20px; 
+		}
+		#li22{
+			background: url(images/fclose.gif) no-repeat;
+			padding-left:20px; 
+		}
+		#li3{
+			background: url(images/doc.gif) no-repeat;
+			padding-left:30px; 
+		}
+	</style>
+</head>
+<body>
+<ul id="ul1">
+	<span id="li1">树形菜单：</span>
+		<ul id="ul2">
+			<li id="li20">文学艺术
+				<ul id="ul30">
+					<li id="li3">先锋写作</li>
+					<li id="li3">小说散文</li>
+					<li id="li3">诗风词韵</li>
+				</ul>
+			</li>
+			<li id="li21">贴图专区
+				<ul id="ul31">
+					<li id="li3">真我风采</li>
+					<li id="li3">视频贴图</li>
+					<li id="li3">行行摄摄</li>
+					<li id="li3">Flash贴图</li>
+				</ul>
+			</li>
+			<li id="li22">房产论坛
+				<ul id="ul32">
+					<li id="li3">我要买房</li>
+					<li id="li3">楼市话题</li>
+					<li id="li3">我要卖房</li>
+					<li id="li3">租房心语</li>
+					<li id="li3">二手市场</li>
+				</ul>
+			</li>
+			<li id="li2">娱乐八卦</li>
+		</ul>
+</ul>	
+
+<script type="text/javascript">
+	var li1=document.getElementsByTagName("span")[0];
+	ul2=document.getElementById('ul2');
+	li1.onclick=function (){
+		if(ul2.style.display=="none"){
+			ul2.style.display='block';
+		}else{
+			ul2.style.display='none';
+		}
+	}
+	var ali=[];
+	for(var i=0;i<3;i++){
+		ali[i]=document.getElementById("li2"+i);
+		ali[i].index=i;
+		ali[i].onclick=function(){
+			var ul=document.getElementById('ul3'+this.index);
+			if(ul.style.display=="none"){
+				ul.style.display='block';
+			}else{
+				ul.style.display='none';
+			}
+		}
+	}
+</script>
+</body>
+</html>

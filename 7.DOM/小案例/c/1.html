@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>层的显示与隐藏二</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>树形菜单</p>
+	<ul>
+		<li onclick="Li()">
+			文学艺术
+			<ul id="ul1" style="visibility:hidden;">    	
+				<li>先锋写作</li>
+				<li>小说散文</li>
+				<li>诗风词韵</li>
+			</ul>
+		</li>
+		<li onclick="Li2()">
+			贴图专区
+			<ul id="ul2" style="visibility:hidden;">
+				<li>真我风采</li>
+				<li>视频贴图</li>
+				<li>行行摄摄</li>
+				<li>Flash贴图</li>
+			</ul>
+		</li>
+
+		<li onclick="Li3()">
+			房价论坛
+			<ul id="ul3" style="visibility:hidden;">
+				<li>我要买房</li>
+				<li>楼市话题</li>
+				<li>我要买房</li>
+				<li>租房心语</li>
+				<li>二手市场</li>
+			</ul>
+		</li>
+		<li>娱乐八卦</li>
+	</ul>
+	<script type="text/javascript">
+		function Li() {
+			var ul1=document.getElementById('ul1');
+				if( ul1.style.visibility=="hidden"){
+					ul1.style.visibility="visible";
+				}else{
+					ul1.style.visibility="hidden";
+				}
+		}
+		function Li2 () {
+			var ul2=document.getElementById('ul2');
+			if( ul2.style.visibility=="hidden" ){
+				ul2.style.visibility="visible";
+			}else{
+				ul2.style.visibility="hidden";
+			}
+		}
+		function Li3 () {
+			var ul3=document.getElementById('ul3');
+			if( ul3.style.visibility=="hidden" ){
+				ul3.style.visibility="visible";
+			}else{
+				ul3.style.visibility="hidden";
+			}
+		}
+	</script>
+
+
+
+</body>
+</html>

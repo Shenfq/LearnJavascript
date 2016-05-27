@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+</head>
+
+<body>
+	<script>
+		var table=document.createElement('table');
+		table.border='1';
+		table.width='400';
+
+		table.insertRow(0);	//添加行
+		for(var i=0;i<4;i++){
+			table.rows[0].insertCell(i);	//添加列
+			table.rows[0].cells[i].appendChild(document.createTextNode("cell"+i));	//添加表格内容
+		}
+		//table.deleteRow(0);//删除行
+		document.body.appendChild(table);
+	</script>
+</body>
+</html>

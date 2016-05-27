@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul{
+			list-style:none;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>树形菜单：
+		<ul>
+			<li>文学艺术
+				<ul>
+					<li>先锋写作</li>
+					<li>小说散文</li>
+					<li>诗风词韵</li>
+				</ul>
+			</li>
+			<li>贴图专区
+				<ul>
+					<li>真我风采</li>
+					<li>视频贴图</li>
+					<li>行行摄摄</li>
+					<li>Flash贴图</li>
+				</ul>
+			</li>
+			<li>房产论坛
+				<ul>
+					<li>我要买房</li>
+					<li>楼市话题</li>
+					<li>我要卖房</li>
+					<li>租房心语</li>
+					<li>二手市场</li>
+				</ul>
+			</li>
+			<li>娱乐八卦</li>
+		</ul>
+	</li>
+</ul>	
+
+<script type="text/javascript">
+	var anode=document.getElementsByTagName("li")[0];
+	anode.style.background="url(images/fclose.gif) no-repeat";
+	anode.style.paddingLeft="20px";
+	var bnode=anode.getElementsByTagName('li');
+	for(var i=0;i<bnode.length;i++){
+		bnode[i].style.background="url(images/fold.gif) no-repeat";
+		bnode[i].style.paddingLeft="20px";
+	}
+	for(var i=0;i<bnode.length;i++){
+		if(bnode[i].getElementsByTagName('li')){
+			var cnode=bnode[i].getElementsByTagName('li');
+			for(var j=0;j<cnode.length;j++){
+				cnode[j].style.background="url(images/doc.gif) no-repeat";
+				cnode[j].style.paddingLeft="30px";
+			}
+		}
+	}
+</script>
+</body>
+</html>
