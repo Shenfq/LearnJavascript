@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	直接在标签上绑定事件
+	<input type="button" value="点我" onclick="show()" />
+	<input type="button" value="双击我" ondblclick="show()" /><br /><br /><br />
+
+	<script type="text/javascript">
+		function show(){
+			alert("点击之后弹出");
+		}
+	</script>
+	
+	<input type="button" value="怎么点都可以" onClick="aa()" onDblClick="bb()">
+	<script type="text/javascript">
+		var isdb;
+		function aa(){
+			isdb=false;
+			window.setTimeout(cc,500);
+			function cc(){
+				if(isdb){
+					return;
+				}
+				alert("这是单击");
+			}
+		}
+		function bb(){
+			isdb=true;
+			alert("这是双击");
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#mydiv{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="mydiv">
+		<li>复制</li>
+		<li>剪切</li>
+		<li>粘贴</li>
+	</div>
+	<script type="text/javascript">
+		var mydiv=document.getElementById("mydiv");
+		document.onmousedown=function(event){
+			var event=event?event:window.event;
+			if(event.button==2){
+				document.oncontextmenu=function(aevent){   //阻止默认的右键行为
+					if(window.event){
+						aevent=window.event;
+						aevent.returnValue=false;   //阻止低版本的ie
+						aevent.preventDefault();	//阻止ie11
+					}else{
+						aevent.preventDefault();
+					}
+				};
+				mydiv.style.cssText="display:block;position:absolute;top:"+(event.clientY+5)+"px;left:"+event.clientX+"px;";
+			}
+			if(event.button==0){
+				mydiv.style.cssText="display:none";
+			}
+		}
+		mydiv.onmousedown=function(){
+			mydiv.style.cssText="display:none";
+		}
+	</script>
+
+</body>
+</html>

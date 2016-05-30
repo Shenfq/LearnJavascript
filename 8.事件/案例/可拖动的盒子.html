@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			position: absolute;
+			left: 300px;
+			top: 200px;
+			font-size:12px;
+			background-color: silver;
+			box-shadow: 2px 2px 4px black;
+			-webkit-box-shadow: 2px 2px 4px black;
+			-ms-box-shadow: 2px 2px 4px black;
+			-moz-box-shadow: 2px 2px 4px black;
+		}
+		#content{
+			border:3px solid #2D7D9A;
+		}
+
+		#top{
+			width:425px;
+			line-height: 25px;
+			padding-left: 5px;
+			background:#BDCEEF;
+			border-bottom:1px solid #A5B5D6;
+			cursor:move;
+		}
+		#close{
+			color:red;
+			font-size: 20px;
+			font-weight: bold;
+			position: absolute;
+			right: 8px;
+			top:2px;
+			width: 25px;
+			text-align: center;
+			cursor:pointer;
+		}
+		#bottom{
+			width: 420px;
+			height: 250px;
+			padding: 10px 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="content">
+			<div id="top">
+				可拖拽
+				<span id="close">X</span>
+			</div>
+			<div id="bottom">
+				内容…………
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var close=document.getElementById('close');
+		var otop=document.getElementById("top");
+		var obox=document.getElementById("box");
+		close.onclick=function(){
+			obox.style.cssText="display:none;";
+		}
+		
+
+		var params={
+			left:0,
+			top:0,
+			currentX:0,
+			currentY:0,
+			flag:false
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj,false)[attr];
+			}
+		}
+		function starDrag(box,top){
+			//获取默认状态box默认的top、left值
+			params.left=getStyle(box,"left");
+			params.top=getStyle(box,"top");
+			
+			top.onmousedown=function(event){//鼠标按下
+				params.flag=true;
+				//不让鼠标选中文字
+				if(!event){
+					event=window.event;
+					top.onselectstart=function(){
+						return false;
+					}
+				}
+				top.onselectstart=function(){
+					return false;
+				}
+				//得到当前鼠标的坐标
+				event=event||window.event;
+				params.currentX=event.clientX;
+				params.currentY=event.clientY;
+			}
+			document.onmousemove=function(event){//鼠标移动
+				event=event||window.event;
+				if(params.flag){
+					//用移动后鼠标的坐标，减去之前鼠标的值，得到移动的差值
+					disleft=event.clientX-params.currentX;
+					distop=event.clientY-params.currentY;
+					box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: "+(parseInt(params.top)+distop)+"px;";
+				}
+			}
+			document.onmouseup=function(event){//松开鼠标
+				event=event||window.event;
+				params.flag=false;
+				params.left=getStyle(box,"left");
+				params.top=getStyle(box,"top");
+			}
+		}
+
+		starDrag(obox,otop);
+	</script>
+</body>
+</html>

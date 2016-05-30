@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="mydiv">
+		<li>复制</li>
+		<li>剪切</li>
+		<li>粘贴</li>
+	</div>
+	<script type="text/javascript">
+		mydiv=document.getElementById("mydiv");
+		mydiv.onmousedown=function(event){
+			var e=event ? event : window.event;
+			console.log("clientX:"+e.clientX+"----clientY:"+e.clientY);
+			console.log("screenX:"+e.screenX+"----screenY:"+e.screenY);
+		}
+	</script>
+
+</body>
+</html>

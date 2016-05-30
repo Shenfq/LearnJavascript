@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="点我" onmousedown="show(event)" />
+
+	<script type="text/javascript">
+		function show(event){
+			var event=event?event:window.event;  //解决浏览器的兼容问题
+			//alert(event); //[object MouseEvent]
+			alert(event.button);   //鼠标右键为右键
+		}
+	</script>
+
+</body>
+</html>

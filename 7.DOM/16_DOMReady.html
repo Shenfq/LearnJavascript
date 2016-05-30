@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<script type="text/javascript" src="16_DOMReady.js"></script>
+	<script>
+		myReady(
+			function (){
+				document.getElementsByTagName('p')[0].style.color="red";
+			}
+		)
+	</script>
+</head>
+
+<body>
+	<p>测试文字</p>
+</body>
+</html>

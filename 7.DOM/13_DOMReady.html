@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<script type="text/javascript">
+		/*
+		window.setTimeout(function(){
+			document.getElementsByTagName('p')[0].style.color="red";
+		},300);//过300毫秒之后再执行那个function  dom树加载完毕需要一定的时间
+		*/
+
+		window.onload=function(){
+			document.getElementsByTagName('p')[0].style.color="red";
+		}//网页加载完毕后再执行代码
+	</script>
+</head>
+
+<body>
+	<pre>
+		DOMReady:
+		HTML是一种标记语言, 告诉我们这页面有什么内容。
+		但行为交互是需要通过DOM操作实现,不能以为那两个尖括号的内容就是一个DOM
+		HTML标签要通过浏览器解析才会变成DOM节点。当我们向地址栏传入一个URL,开始加载页面到我们看到内容,这期间就有一个DOM节点构建的过程。
+		节点们是以树的形式组织的,当页面上所有HTML都转换为节点,这就叫做DOM树建完,简称之domReady。
+	</pre>
+
+	<p>测试文字</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<script>
+		window.onload=function(){
+			alert("DOM树以及外部资源全部加载");
+		}
+		function DOMContentLoaded(){
+			alert("DOM树加载完毕");
+		}
+		document.addEventListener("DOMContentLoaded",DOMContentLoaded,false);
+	</script>
+</head>
+
+<body>
+	<img src="http://img.daimg.com/uploads/allimg/160524/3-160524224429.jpg">
+</body>
+</html>

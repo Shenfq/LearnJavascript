@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+		mousedown:鼠标按下
+		mouseup:鼠标松开
+
+		mouseout:鼠标移出
+		mouseover:鼠标移入
+		
+		mousemove:鼠标移动
+	</pre>
+	<input type="button" value="看看鼠标对我的作用" id="btn" />
+
+	<script type="text/javascript">
+		var btn=document.getElementById("btn");
+		btn.addEventListener("mousedown",function(){
+			alert("mousedown:鼠标按下");
+		});
+		btn.addEventListener("mouseup",function(){
+			alert("mouseup:鼠标松开");
+		});
+		btn.addEventListener("mouseout",function(){
+			alert("mouseout:鼠标移出");
+		});
+		btn.addEventListener("mouseover",function(){
+			alert("mouseover:鼠标移入");
+		});
+		btn.addEventListener("mousemove",function(){
+			alert("mousemove:鼠标移动");
+		});
+	</script>
+</body>
+</html>

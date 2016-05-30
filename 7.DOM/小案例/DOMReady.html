@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>     
+	<meta charset="UTF-8">
+	<title>DOM基础</title>
+	<script type="text/javascript" src="DOMReady.js"></script>
+
+</head>
+
+<body>
+	<div id="msg"></div>
+	<img src="http://a.hiphotos.baidu.com/zhidao/pic/item/242dd42a2834349b4be15c5bccea15ce37d3be0c.jpg">
+	<img src="http://h.hiphotos.baidu.com/zhidao/pic/item/32fa828ba61ea8d3da31c7cd920a304e241f58e3.jpg">
+	
+	<script type="text/javascript">
+		var msg=document.getElementById('msg');
+		var start=new Date().getTime();
+		var time1=null;
+		var time2=null;
+
+		myReady(function(){
+			time1=new Date().getTime()-start;
+			msg.innerHTML+="myReady加载完的时间："+time1+"ms<br />";
+		});
+
+		window.onload=function(){
+			time2=new Date().getTime()-start;
+			msg.innerHTML+="onload加载完的时间："+time2+"ms<br />";
+			msg.innerHTML+="相差时间："+(time2-time1)+"ms<br />";
+		}
+	</script>
+</body>
+</html>
