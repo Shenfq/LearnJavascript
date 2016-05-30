@@ -109,6 +109,20 @@
 					disleft=event.clientX-params.currentX;
 					distop=event.clientY-params.currentY;
 					box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: "+(parseInt(params.top)+distop)+"px;";
+					if(parseInt(getStyle(box,"left"))<=0){
+						params.flag=false;
+						box.style.cssText="left: 1px;top: "+(parseInt(params.top)+distop)+"px;";
+					}else if(parseInt(getStyle(box,"top"))<=0){
+						params.flag=false;
+						box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: 1px;";
+					}else if(parseInt(getStyle(box,"top"))>=373){
+						params.flag=false;
+						box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: 372px;";
+					}else if(parseInt(getStyle(box,"left"))>926){
+						params.flag=false;
+						box.style.cssText="left: 925px;top: "+(parseInt(params.top)+distop)+"px;";
+					}
+					console.log(getStyle(box,"left")+"-----"+getStyle(box,"top"));
 				}
 			}
 			document.onmouseup=function(event){//松开鼠标
