@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.style1{
+			color:green;
+			border-bottom: 1px solid green;
+		}
+		.style2{
+			color:red;
+			border-bottom: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	打字练习：<br />
+	<h2 id="test"></h2>
+
+	<p>键入内容：
+		<input type="text" name="textfield" size="50" id="inp" />
+	</p>
+	<script type="text/javascript">
+		var str="welcome to study center";
+		window.onload=function(){
+			var htmlstr="";
+			for(var i=0;i<str.length;i++){
+				htmlstr+="<span id='myspan"+i+"'>"+str.substring(i,i+1)+"</span>";
+			}
+			document.getElementById("test").innerHTML=htmlstr;
+		}
+		var j=0;
+		var inp=document.getElementById("inp");
+		inp.onkeypress=function(event){
+			var e=event?event:window.event;
+			var realchar=String.fromCharCode(e.keyCode);
+			if(str.substring(j,j+1)==realchar){
+				document.getElementById("myspan"+j).className="style1";
+			}else if(e.keyCode==8){
+				return;
+			}else{
+				document.getElementById("myspan"+j).className="style2";
+			}
+			j++;
+		}
+		inp.onkeydown=function(event){
+			var e=event?event:window.event;
+			if(e.keyCode==8){
+				j--;
+				if(j<0){
+					j=0;
+				}
+				document.getElementById("myspan"+j).className="";
+			}
+			
+		}
+	</script>
+</body>
+</html>

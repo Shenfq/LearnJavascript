@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
+		body { -moz-user-select: none; }/*用来兼容ff下让鼠标不能选中文字*/
 		#box{
 			position: absolute;
 			left: 300px;
@@ -71,6 +72,8 @@
 			top:0,
 			currentX:0,
 			currentY:0,
+			clientH:document.documentElement.clientHeight,
+			clientW:document.documentElement.clientWidth,
 			flag:false
 		}
 		function getStyle(obj,attr){
@@ -80,23 +83,23 @@
 				return getComputedStyle(obj,false)[attr];
 			}
 		}
+		document.documentElement.onmousedown=function(event){//不让鼠标选中文字
+			if(!event){
+				event=window.event;
+				this.onselectstart=function(){
+					return false;
+				}
+			}
+			this.onselectstart=function(){
+				return false;
+			}
+		}
 		function starDrag(box,top){
 			//获取默认状态box默认的top、left值
 			params.left=getStyle(box,"left");
 			params.top=getStyle(box,"top");
-			
 			top.onmousedown=function(event){//鼠标按下
 				params.flag=true;
-				//不让鼠标选中文字
-				if(!event){
-					event=window.event;
-					top.onselectstart=function(){
-						return false;
-					}
-				}
-				top.onselectstart=function(){
-					return false;
-				}
 				//得到当前鼠标的坐标
 				event=event||window.event;
 				params.currentX=event.clientX;
@@ -109,20 +112,36 @@
 					disleft=event.clientX-params.currentX;
 					distop=event.clientY-params.currentY;
 					box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: "+(parseInt(params.top)+distop)+"px;";
+					//用来解决盒子碰到边缘后还能继续拖动
 					if(parseInt(getStyle(box,"left"))<=0){
-						params.flag=false;
+						// params.flag=false;
 						box.style.cssText="left: 1px;top: "+(parseInt(params.top)+distop)+"px;";
+						if(parseInt(getStyle(box,"top"))<=0){
+							box.style.cssText="left: 1px;top: 1px;";
+						}
 					}else if(parseInt(getStyle(box,"top"))<=0){
-						params.flag=false;
+						// params.flag=false;
 						box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: 1px;";
-					}else if(parseInt(getStyle(box,"top"))>=373){
-						params.flag=false;
-						box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: 372px;";
-					}else if(parseInt(getStyle(box,"left"))>926){
-						params.flag=false;
-						box.style.cssText="left: 925px;top: "+(parseInt(params.top)+distop)+"px;";
+						if(parseInt(getStyle(box,"left"))<=0){
+							box.style.cssText="left: 1px;top: 1px;";
+						}
 					}
-					console.log(getStyle(box,"left")+"-----"+getStyle(box,"top"));
+					if(document.documentElement.clientHeight!=params.clientH){
+						box.style.cssText="right: 1px;left:auto;top: "+(parseInt(params.top)+distop)+"px;";
+						if(document.documentElement.clientWidth!=params.clientW){
+							box.style.cssText="right: 1px;left:auto;top:auto;bottom:1px;";
+						}else if(parseInt(getStyle(box,"top"))<=0){
+							box.style.cssText="right: 1px;left:auto;top:1px;";
+						}
+					}else if(document.documentElement.clientWidth!=params.clientW){
+						box.style.cssText="left: "+(parseInt(params.left)+disleft)+"px;top: auto;bottom:1px;";
+						if(document.documentElement.clientHeight!=params.clientH){
+							box.style.cssText="right: 1px;left:auto;top:auto;bottom:1px;";
+						}else if(parseInt(getStyle(box,"left"))<=0){
+							box.style.cssText="left:1px;top: auto;bottom:1px;";
+						}
+					}
+					//console.log(document.documentElement.clientHeight+"-----"+document.documentElement.clientWidth);
 				}
 			}
 			document.onmouseup=function(event){//松开鼠标

@@ -31,6 +31,11 @@ function $(id){  //获得当前的id的对象引用
 	return document.getElementById(id);
 }
 
+function $e(event){
+	e=event?event:widow.event;
+	return e
+}
+
 function delDefault(event){ //清除浏览器的默认样式
 	if(window.event){
 		e=window.event;

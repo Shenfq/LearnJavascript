@@ -12,6 +12,38 @@
 			var event=event || window.event;
 			img.style.cssText="position:fixed;top:"+(event.clientY-60)+"px;left:"+(event.clientX-20)+"px;";
 		}
+		document.onkeydown=function(event){
+			var e=event?event:window.event;
+			var fish=document.getElementById("myimg");
+			switch(e.keyCode){
+				case 37:
+					num=parseInt(fish.style.left);
+					if(num>=10){
+						fish.style.left=(num-10)+"px";
+					}
+					break;
+				case 38:
+					num=parseInt(fish.style.top);
+					if(num>=10){
+						fish.style.top=(num-10)+"px";
+					}
+					break;
+				case 39:
+					num=parseInt(fish.style.left);
+					if(num+10<=document.documentElement.clientWidth-128){
+						fish.style.left=(num+10)+"px";
+					}
+					break;
+				case 40:
+					num=parseInt(fish.style.top);
+					if(num+10<=document.documentElement.clientHeight-128){
+						fish.style.top=(num+10)+"px";
+					}
+					break;
+				// default:
+				// 	break;
+			}
+		}
 	</script>
 </body>
 </html>

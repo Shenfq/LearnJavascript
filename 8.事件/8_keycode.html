@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="inp1" type="text" value="keydown" />
+	<br /><br /><br />
+	<input id="inp2" type="text" value="keypress" />
+	
+	<script type="text/javascript">
+		var inp1=document.getElementById("inp1");
+		var inp2=document.getElementById("inp2");
+		//fromCharCode方法可以把unicode编码转换成字符值
+		inp1.onkeydown=function(event){
+			var e=event?event:window.event;
+			//会得到一个unicode编码
+			console.log("keydown:"+String.fromCharCode(e.keyCode));
+		}
+		inp2.onkeypress=function(event){
+			var e=event?event:window.event;
+			//会得到一个ASCII码
+			if(e.keyCode){
+				console.log("keypress:"+String.fromCharCode(e.keyCode));
+			}else{
+				console.log("keypress:"+String.fromCharCode(e.which));//用于兼容火狐浏览器
+			}
+			
+		}
+	</script>
+</body>
+</html>

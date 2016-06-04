@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="text" type="text" name="text">
+
+	<script type="text/javascript">
+		var txt=document.getElementById("text");
+		// txt.onkeydown=function(){//当键盘被按下时触发,键盘一直按住会不断触发(opera除外)
+		// 	console.log(this.value);
+		// }
+		// txt.onkeypress=function(){//当键盘按下并松开后触发，键盘一直按住会不断触发
+		// 	console.log(this.value);
+		// }
+		//onkeydown和onkeypress都是先触发事件再输入值
+		/*
+		onkeydown和onkeypress的区别在于：
+			onkeydown在用户按下某个按键后发生，一直按住会不断触发
+			onkeypress是产生一个字符后发生(只有当用户按下一个能在屏幕上输出的按键时才会被触发)，键盘一直按住会不断触发。
+			就是说keydown和keypress的区别在于，能否监听用户按下ctrl、shift等功能按键。keypress是监听不到这些功能按键的(firefox除外)。而keydown则可以。
+		*/
+		txt.onkeyup=function(){//当键盘松开后触发||会先显示内容再触发
+			console.log(this.value);
+		}
+	</script>
+</body>
+</html>

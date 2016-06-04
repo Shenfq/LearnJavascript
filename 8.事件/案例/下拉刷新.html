@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding:0px;
+			margin:0 auto;
+		}
+		#mainContent{
+			width: 200px;
+			height: 300px;
+			border:1px solid #666;
+			margin-top:20px;
+			overflow: scroll;
+		}
+		#myContent{
+			width:100%;
+		}
+		li{
+			text-align: center;
+			list-style: none;
+		}
+		#showhidden{
+			background: #3cf;
+			width: 100%;
+			height:20px;
+		}
+		#showhidden p{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="mainContent">
+		<div id="myContent">
+			<ul>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+				<li>item scroll item</li>
+			</ul>
+		</div>
+		<div id="showhidden" style="display: none;">
+			<p>加载中，请稍候</p>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript">
+		var obj=document.getElementById("mainContent");
+		obj.onscroll=function(){
+			var scrollH=obj.scrollHeight;	//指整个内容的高度，包括被“卷”起来的部分
+			var scrollT=obj.scrollTop;		//滚动条距离顶部的多少----滚动到哪里来了
+			var clientH=obj.clientHeight;	//内容区域的高度
+			//当滚动条滚到底部的时候  ==》 scrollHeight=ScrollTop+clientHeight
+			//console.log(scrollH+"----"+scrollT+"----"+clientH);
+			if(scrollH==scrollT+clientH){
+				//表示已经到了底部
+				var sh=document.getElementById("showhidden");
+				sh.style.display="block";
+				window.setTimeout("frush()",1000);
+			}
+		}
+
+		function frush(){   //加载新的下拉列表
+			var newdiv=document.createElement("div");
+			var newul=document.createElement("ul");
+			for(var i=0;i<18;i++){
+				var newli=document.createElement("li");
+				newli.innerHTML="--item scroll item";
+				newul.appendChild(newli);
+			}
+			newdiv.appendChild(newul);
+			var sh=document.getElementById("showhidden");
+			obj.insertBefore(newdiv,sh);
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding:0px;
+			margin:0 auto;
+		}
+		#container{
+			height: 477px;
+			border:1px solid #ccc;
+			position: relative;
+			overflow: hidden;
+		}
+		img{
+			border: 1px solid #ccc;
+			position:absolute;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img src="door1.png" alt="图片1" title="图片1" />
+		<img src="door2.png" alt="图片2" title="图片2" />
+		<img src="door3.png" alt="图片3" title="图片3" />
+		<img src="door4.png" alt="图片4" title="图片4" />
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var box=document.getElementById("container");
+			var imgs=document.getElementsByTagName("img");
+			var imgW=imgs[0].offsetWidth;  //获取某个元素的当前大小
+			var imghiddenW=160;
+
+			var boxWidth=imgW+imghiddenW*(imgs.length-1);//整个容器的大小
+			box.style.width=boxWidth+"px";
+
+			function setImagesPos(){
+				for(var i=1;i<imgs.length;i++){   //设置每个图片的初始位置
+					imgs[i].style.left=imgW+imghiddenW*(i-1)+"px";
+				}
+			}
+			
+			setImagesPos();
+			for(var i=0;i<imgs.length;i++){    //给每个图片添加一个事件
+				imgs[i].index=i+1;
+				imgs[i].onmouseover=function(){
+					setImagesPos();//首先将图片初始化
+					for(var j=0;j<this.index;j++){
+						imgs[j].style.left=imghiddenW*j+"px";
+					}
+				}
+			}
+
+		}
+	</script>
+</body>
+</html>

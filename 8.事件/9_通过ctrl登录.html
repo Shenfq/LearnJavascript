@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="" method="get">
+		<input id="user" type="text" /><br />
+		<input id="pwd" type="password" /><br />
+		<input name="btn" type="submit" value="登录" />
+	
+	<script type="text/javascript">
+		var inp1=document.getElementById("inp1");
+		var inp2=document.getElementById("inp2");
+		document.onkeydown=function(event){
+			var e=event?event:window.event;
+			//alert(e.keyCode);
+			if(e.keyCode==17){
+				document.getElementsByTagName("form")[0].submit();
+			}
+		}
+	</script>
+</body>
+</html>
