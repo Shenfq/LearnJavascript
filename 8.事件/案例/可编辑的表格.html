@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			font-size:12px;
+			font-family:"微软雅黑";
+		}
+		
+		table{
+			border:1px solid #999;
+			border-collapse:collapse;/*修正单元格之间的边框为可合并*/
+			width:400px;
+		}
+		
+		table tr{
+			line-height:24px;
+		}
+		
+		table tbody th{
+			background:#36F;
+			width:50%;
+		}
+		
+		table td{
+			text-align:center;
+		}
+		
+		a{
+			display:inline-block;
+			padding:8px;
+			background:#3C6;
+			text-decoration:none;
+			font-size:18px；
+			font-weight:bold;
+			color:#FC3;
+			font-family:"隶书";
+			margin-left:10px;
+		}
+		
+		a:hover{
+			background:#666;
+		}
+		
+		#tishiInfo{
+			border:1px solid #699;
+			border-radius:3px;
+			width:200px;
+			height:30px;
+			line-height:30px;
+			font-size:14px;
+			/*background:#C1E3D3 url(images/tishi.png) no-repeat left center;*/
+			color:#fff;
+			padding-left:30px;
+			position:absolute;
+			top:200px;
+			left:600px;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<table border="1px" cellpadding="0px" cellspacing="0px" id="mytable" align="center" width="600px">
+    	<thead>
+        	<tr>
+            	<th colspan="2">学生信息表</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<tr>
+            	<th>学号</th>
+                <th>姓名</th>
+            </tr>
+            <tr>
+            	<td>08301440110</td>
+                <td>张三</td>
+            </tr>
+        	<tr>
+            	<td>08301440111</td>
+                <td>李四</td>
+            </tr>
+            <tr>
+            	<td>08301440112</td>
+                <td>王五</td>
+            </tr>
+            <tr>
+            	<td>08301440113</td>
+                <td>赵六</td>
+            </tr>
+            <tr>
+            	<td>08301440114</td>
+                <td>钱七</td>
+            </tr>
+            <tr>
+            	<td>08301440115</td>
+                <td>王八</td>
+            </tr>
+             <tr>
+            	<td>08301440112</td>
+                <td>王五</td>
+            </tr>
+            <tr>
+            	<td>08301440113</td>
+                <td>赵六</td>
+            </tr>
+            <tr>
+            	<td>08301440114</td>
+                <td>钱七</td>
+            </tr>
+            <tr>
+            	<td>08301440115</td>
+                <td>王八</td>
+            </tr>
+        </tbody>
+    </table>
+    <br /> <br />
+    <center><a href="javascript:delInfo()">删除光标所在行</a><a href="javascript:addInfo()">添加一行</a></center>
+    <p id="tishiInfo">信息修改成功...</p>
+
+
+    <script type="text/javascript">
+    	window.onload=function(){
+    		showInfo();
+    	}
+		var delobj;
+		
+		function setColor(){
+			var tbodyTrs=document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    		for(var i=0;i<tbodyTrs.length;i++){
+				tbodyTrs[i].style.cssText="background:none";
+    			if(i%2==0){
+    				//对奇数行的td设置蓝色背景
+    				tbodyTrs[i].style.cssText="background:#319CFF";
+    			}
+    		}
+
+    		for(var i=0;i<tbodyTrs.length;i++){
+    			tbodyTrs[i].index=i;
+    			tbodyTrs[i].addEventListener("mouseover",function(){
+    				//鼠标移上去后背景变为浅蓝色
+    				this.style.cssText="background:#63FFFF;"
+    			});
+    			//鼠标移开后恢复成默认样式
+    			tbodyTrs[i].addEventListener("mouseout",function(){
+    				if(this.index%2==0){
+    					this.style.cssText="background:#319CFF;"
+    				}else{
+    					this.style.cssText="background:#FFF;"
+    				}
+    			});
+    		}
+		}
+		
+    	function showInfo(){
+    		setColor();
+    		var tds=document.getElementsByTagName("td");
+			if(arguments.length){
+				tds[tds.length-1].addEventListener("click",tdclick);
+				tds[tds.length-2].addEventListener("click",tdclick);
+			}else{
+				for(var i=0;i<tds.length;i++){
+					//为每一个td添加点击事件
+					tds[i].addEventListener("click",tdclick);
+				}
+			}
+
+    		function tdclick(){  //点击td创建一个input标签
+				delobj=this.parentNode;
+    			var inputObj=document.createElement("input");
+    			inputObj.type="text";
+    			inputObj.style.cssText="border:0px;font-size:12px";
+    			var tdobj=this;
+    			inputObj.value=tdobj.innerHTML;
+    			var txt=tdobj.innerHTML;
+    			tdobj.innerHTML="";
+    			tdobj.appendChild(inputObj);
+    			inputObj.select();
+    			tdobj.removeEventListener("click",tdclick);//删除td点击事件
+
+    			//添加键盘事件
+    			inputObj.onkeydown=function(event){
+    				var e=event?event:widow.event;
+    				var keycode=e.keyCode;
+    				if(keycode==13){//回车键
+    					var inputVal=this.value;
+    					tdobj.innerHTML=inputVal;
+    				}else if(keycode==27){//Esc键
+    					tdobj.innerHTML=txt;
+    				}
+					tdobj.removeEventListener("click",tdclick);
+    				tdobj.addEventListener("click",tdclick);
+    			}
+
+    			//添加失焦事件
+    			inputObj.onblur=function(){
+    				tdobj.innerHTML=txt;
+					tdobj.removeEventListener("click",tdclick);
+    				tdobj.addEventListener("click",tdclick);
+    			}
+    		}
+    	}
+		function delInfo(){
+			var result=confirm("你确定要删除这个数据吗？");
+			if(result){
+				if(window.ActiveXobject){
+					delobj.parentNode.removeChild(delobj);
+				}else{
+					delobj.remove();
+				}
+				setColor();
+			}
+		}
+		function addInfo(){
+			var tbody=document.getElementsByTagName("tbody")[0];
+			var trinfo=document.createElement("tr");	
+			var tdinfo=document.createElement("td");
+			tdinfo.innerHTML="08301440116";
+			trinfo.appendChild(tdinfo);
+			var tdinfo2=document.createElement("td");
+			tdinfo2.innerHTML="王九";
+			trinfo.appendChild(tdinfo2);
+			tbody.appendChild(trinfo);
+			
+			showInfo(1);
+		}
+    </script>
+</body>
+</html>

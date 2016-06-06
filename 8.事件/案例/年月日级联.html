@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select id="year">
+		<option disabled="yes">年</option>
+	</select>
+	<select id="month">
+		<option disabled="yes">月</option>
+	</select>
+	<select id="day">
+		<option disabled="yes">日</option>
+	</select>
+
+	<script type="text/javascript">
+		var year=document.getElementById("year");
+		var month=document.getElementById("month");
+		var day=document.getElementById("day");
+		var selyear,selmonth;
+		for(var i=2016;i>=1970;i--){
+			var opt=document.createElement("option");
+			opt.innerHTML=i;
+			year.appendChild(opt);
+		}
+		appopt(month,12);
+		year.onchange=function(){
+			selyear=this.options[this.selectedIndex].text;
+		}
+		month.onchange=function(){
+			selmonth=this.options[this.selectedIndex].text;
+			console.log(selmonth);
+			var flag=false;
+			if(selyear%4==0&&selyear%100!=0){
+				flag=true;
+			}else if(selyear%400==0){
+				flag=true;
+			}
+			if(selmonth==2){
+				if(flag){
+					appopt(day,29);
+				}else{
+					appopt(day,28);
+				}
+			}else if(selmonth==1||selmonth==3||selmonth==5||selmonth==7||selmonth==8||selmonth==10||selmonth==12){
+				appopt(day,31);
+			}else{
+				appopt(day,30);
+			}
+		}
+		function appopt(type,length){
+			for(var i=1;i<=length;i++){
+				var opt=document.createElement("option");
+				opt.innerHTML=i;
+				type.appendChild(opt);
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>模仿百度文库</title>
+<style type="text/css">
+	*{
+		padding: 0;
+	}
+	textarea{
+		border:none;
+		width: 600px;
+		height:300px;
+		font-size: 14px;
+	}
+	#mydiv{
+		display: none;
+		position: absolute;
+	}
+	#mydiv span{
+		display: inline-block;
+		width: 14px;
+		height: 11px;
+		background: url(http://static.wenku.bdimg.com/static/wkview/widget/api_share/img/panel_514568c.png) no-repeat 0 -30px;
+		z-index: 2;
+		margin-left: 15px; 
+		/*position: absolute;*/
+		
+	}
+	#mydiv div{
+		line-height: 24px;
+		border:1px solid #C4C4C4;
+		width: 200px;
+		padding: 5px;
+		color:lime;
+		text-align: center;
+		background: #fff;
+		margin-top: -4.5px;
+		z-index: 1;
+	}
+</style>
+</head>
+
+<body>
+	<textarea id="txa">备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。备课：结合教导处备课的精神，先同年级、同学科集体备课，再进行个人备课。备课要充分体现学校“3445”教学模式，每周二课时。实行先周备课。每周一12:00前验印，过时不验印者，责任自负。
+	</textarea>
+    <div id="mydiv">
+    	<span></span>
+    	<div>复制|搜索|翻译|百科|分享</div>
+    </div>
+
+    <script type="text/javascript">
+    	var txa=document.getElementById("txa");
+    	var mydiv=document.getElementById("mydiv");
+    	var x,y=0;
+    	txa.onselect=function(){
+    		mydiv.style.cssText="display:block;left:"+(x-20)+"px;top:"+(y+3)+"px;";
+    	}
+    	txa.onmouseup=function(event){
+    		var e=event?event:window.event;
+    		x=e.clientX;
+    		y=e.clientY;
+    	}
+    	document.onmousedown=function(){
+    		mydiv.style.display="none";
+    	}
+    </script>
+</body>
+</html>

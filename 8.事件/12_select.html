@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<input id="inp" type="text" name="text" value="请用鼠标选中我，哈哈哈哈哈哈哈哈" />
+    <textarea id="txa">请用鼠标选中我，哈哈哈哈哈哈哈哈</textarea>
+    <span id="spa">请用鼠标选中我，哈哈哈哈哈哈哈哈</span> 
+    
+    <script>
+		var inp=document.getElementById("inp");
+		var spa=document.getElementById("spa");
+		var txa=document.getElementById("txa");
+		inp.onselect=function(){//该事件只支持可输入文本的标签
+			alert("你选中了文本");
+		}
+		txa.onselect=function(){
+			alert("你选中了文本");
+		}
+		spa.onselectstart=function(){//不支持火狐浏览器
+			//可以用来阻止用户选中文本
+			return false;
+		}
+		//兼容火狐浏览器
+		spa.style.cssText="-moz-user-select:none;";
+	</script>
+</body>
+</html>

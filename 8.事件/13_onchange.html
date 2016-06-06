@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	onchange:内容改变时触发事件。在失去焦点的时候才会被触发
+	<br />
+	<input id="inp" type="text" name="text" />
+	<br />
+    <select id="sel" name="province">
+    	<option value="hn">湖南</option>
+    	<option value="hb">湖北</option>
+    	<option value="ah">安徽</option>
+    	<option value="jx">江西</option>
+    </select>
+
+    
+    <script>
+		var inp=document.getElementById("inp");
+		inp.onchange=function(){
+			alert("内容被改变了");
+		}
+		var sel=document.getElementById("sel");
+		sel.onchange=function(){
+			var index=this.selectedIndex;
+			console.log(this.options[index].text);
+			console.log(this.value);
+		}
+	</script>
+</body>
+</html>
