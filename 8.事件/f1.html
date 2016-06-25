@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="oDiv">
+		<p id="oP">
+			<span id="oSpan">请点击我</span>
+		</p>
+	</div>
+	<script type="text/javascript">
+		var div=document.getElementById("oDiv");
+		var p=document.getElementById("oP");
+		var span=document.getElementById("oSpan");
+		//DOM事件流
+		// div.onclick=function(){
+		// 	alert("div被点击了");
+		// }
+		// p.onclick=function(){
+		// 	alert("p被点击了");
+		// }
+		// span.onclick=function(){
+		// 	alert("span被点击了");
+		// }
+
+		//事件捕获
+		div.addEventListener("click",function(){
+			alert("div被点击");
+		},true);//如果设置为true，表示在事件捕获阶段被捕获
+		p.addEventListener("click",function(){
+			alert("p被点击");
+		},true);
+		span.addEventListener("click",function(){
+			alert("span被点击");
+		},true);
+	</script>
+</body>
+</html>

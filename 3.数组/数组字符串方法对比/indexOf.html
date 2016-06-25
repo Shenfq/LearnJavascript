@@ -11,12 +11,12 @@
 		var a=str.indexOf('c',32);
 		var b=str.indexOf("c",4);
 		var c=str.indexOf('c',-2);
-		document.write(a+"---"+b+"---"+c+"<br>");
+		document.write(a+"||"+b+"||"+c+"<br>");
 
 		var a=str.lastIndexOf('c',32);
 		var b=str.lastIndexOf("c",2);
-		var c=str.lastIndexOf('a',-1);
-		document.write(a+"---"+b+"---"+c+"<br>");
+		var c=str.lastIndexOf('c',-1);
+		document.write(a+"||"+b+"||"+c+"<br>");
 
 		var arr=[1,2,3,5,1,2];
 		var a=arr.indexOf(2,6);
@@ -29,6 +29,13 @@
 		var b=arr.lastIndexOf(1,-3);
 		var c=arr.lastIndexOf(1,2);
 		document.write(a+"---"+b+"---"+c+"<br>");
+
+
+		var str = "AA BB CC DD EE FF"; 
+		var arr=str.split(" ",3);
+		console.log(typeof(str));
+		console.log(typeof(arr));
+		console.log(arr); //AA,BB,CC 
 	</script>
 </body>
 </html>

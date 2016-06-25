@@ -7,9 +7,14 @@
 <body>
 	<script type="text/javascript">
 		str="abcdefg";
-		var a=str.substr();  //start ，length
-		var b=str.substring(5,-2);  //  start ，end
-		document.write(a+"----"+b);
+		var a=str.substr(3);  //start ，length
+		var b=str.substring(-5);  //  start ，end
+		document.write(a+"----"+b+"<br />");
+
+		document.write(str.slice(0)+"<br />");
+		document.write(str.slice(0,5)+"<br />");
+		document.write(str.slice(5,0)+"<br />");
+		document.write(str.slice(-5,-1)+"<br />");
 	</script>
 </body>
 </html>

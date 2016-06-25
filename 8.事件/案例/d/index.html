@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片轮换</title>
+	<style type="text/css">
+		*{
+			background:transparent;
+			border:0;
+			margin:0 auto;
+			padding:0;
+		}
+
+		ul{
+			list-style-type: none;
+		}
+
+		body{
+			background-color:#dfdfdf;
+		}
+
+		.maintype_left{
+			margin:10px 0 0 11px;
+			width:545px;
+			height:260px;
+		}
+
+		.scroll_mid{
+			background-color:#f2f2f3;
+			border-left:solid 1px #d6d5d6;
+			border-right:solid 1px #d6d5d6;
+			width:535px;
+			height:250px;
+			padding:5px 5px 5px 5px;
+			float:left;
+			position: relative;
+		}
+
+		#pic{
+			float:right;
+			width:535px;
+			height:250px;
+		}
+
+		#scroll_number{
+			clear:both;
+			padding-right:10px;
+			display:inline;
+		}
+
+		#scroll_number li{
+			width:20px;
+			line-height:16px;
+			text-align:center;
+			border:solid 1px #999;
+			margin-top:5px;
+			font-size:12px;
+			float:left;
+		}
+		li{
+			background-color:#f2f2f3;
+		}
+		.scroll_number_out{
+			background-color:#f2f2f3;
+		}
+			
+		.scroll_number_over{
+			background-color:#F96;
+			color:#FFF;
+		}
+		#rights,#lefts{
+			width: 90px;
+			height: 40%;
+			position: absolute;
+			top: 30%;
+			opacity:0.5;
+		}
+		#rights{
+			background: url(images/right.png) no-repeat center;
+			right: 0px;
+		}
+		#lefts{
+			background: url(images/left.png) no-repeat center;
+			left:0px;
+		}
+		#rights:hover{
+			opacity:1;
+		}
+		#lefts:hover{
+			opacity:1;
+		}
+	</style>
+</head>
+<body>
+	<div class="maintype_left">
+		<div class="scroll_mid">
+			<img src="images/pic_1.jpg" id="pic" />
+			<ul id="scroll_number">
+				<li onMouseOver="show(1)" onMouseOut="start()">1</li>
+				<li onMouseOver="show(2)" onMouseOut="start()">2</li>
+				<li onMouseOver="show(3)" onMouseOut="start()">3</li>
+				<li onMouseOver="show(4)" onMouseOut="start()">4</li>
+				<li onMouseOver="show(5)" onMouseOut="start()">5</li>
+				<li onMouseOver="show(6)" onMouseOut="start()">6</li>
+			</ul>
+			<div id="rights" onMouseup="start()"></div>
+			<div id="lefts" onMouseup="start()"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var time=window.setInterval("show()",2000);
+		var index=1;
+		var lis=document.getElementsByTagName("li");
+		function show(id){
+			if(id){
+				//onmouseover
+				index=id;
+				clearInterval(time);
+			}else{
+				index=index%6+1;   //每六张循环一次
+			}
+			document.getElementById("pic").setAttribute("src","images/pic_"+index+".jpg");
+			//lis[index].setAttribute("class","scroll_number_over");
+			for(var i=0;i<lis.length;i++){
+				lis[i].setAttribute("class","scroll_number_out");
+				if(i==index-1){
+					lis[i].setAttribute("class","scroll_number_over");
+				}
+			}
+		}
+		function start(){
+			time=window.setInterval("show()",2000);
+		}
+		var right=document.getElementById("rights");
+		var left=document.getElementById("lefts");
+		right.onmousedown=function(event){
+			var e=event?event:windwo.event;
+			for(var i=0;i<lis.length;i++){
+				if(lis[i].className=="scroll_number_over"){
+					var id=lis[i].innerHTML;
+				}
+			}
+			id=Number(id)+1;
+			if(id==7){
+				id=1;
+			}
+			show(id);
+		}
+		left.onmousedown=function(event){
+			var e=event?event:windwo.event;
+			for(var i=0;i<lis.length;i++){
+				if(lis[i].className=="scroll_number_over"){
+					var id=lis[i].innerHTML;
+				}
+			}
+			id=Number(id)-1;
+			if(id==0){
+				id=6;
+			}
+			show(id);
+		}
+	</script>
+	
+</body>
+</html>
