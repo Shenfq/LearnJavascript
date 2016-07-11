@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo1</title>
+	<script type="text/javascript">
+		function newopen(){
+			var ret=window.showModalDialog("demo2.html",window,"dialogWidth=300,dialogHeight=300,location=0,status=0,resizable=0");
+			if(ret){
+				document.getElementById("address").value=ret;
+			}
+		}
+	</script>
+</head>
+<body>
+	姓名：<input type="text" name="name" id="name"><br/><br/>
+	地址：<input type="text" name="address" id="address">
+	<input type="button" value="选择" onclick="newopen()">
+</body>
+</html>

@@ -8,14 +8,22 @@
 	<script type="text/javascript">
 		//test,search,match,replace
 		//字符串.replace(regexp)   字符串替换    返回替换后的字符串
-		var str="aaa";
-		var reg=/a/;
-		str=str.replace(reg,"b");
+		var str="Hello World";
+		var reg=/World/;
+		str=str.replace(reg,"Javascript");
 		document.write(str+"<br />"); //baa
 
 		var reg=/a/g;
 		str=str.replace(reg,"b");
 		document.write(str+"<br />");  //bbb
+
+
+		var name = "i am a boy"; 
+		var reg=/\b\w+\b/g;
+		var uw=name.replace(reg, function(word){ 
+		return word.substring(0,1).toUpperCase()+word.substring(1);} 
+		); 
+		document.write(uw+"<br />");//I Am A Boy
+
 	</script>
-</body>
 </html>

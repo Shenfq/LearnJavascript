@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示商品信息</title>
+</head>
+<body>
+	<table id="protable" width="600">
+		<thead>
+			<tr>
+				<td>编号</td>
+				<td>商品名</td>
+				<td>价格</td>
+				<td>图像</td>
+			</tr>
+		</thead>
+		<tbody id="protbody">
+			
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+		//请求服务器。。。
+		var result="{\"page\":1,\"rows\":10,\"commodity\":[{\"pid\":1,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":2,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":3,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":4,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":5,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":6,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":7,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":8,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":9,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"},{\"pid\":10,\"pname\":\"香蕉\",\"price\":35,\"img\":\"1.jpg\"}]}";
+		//调用window对象中的eval，可以把一个字符串当作代码来解析
+		var res=eval("("+result+")");//加上（）的原因是为了让eval把当前字符串当作一个代码块来看，而不是一个函数块
+		var str="";
+		for(var i=0;i<res.commodity.length;i++){
+			str+="<tr>";
+			var data=res.commodity[i];
+			str+="<td>"+data.pid+"</td><td>"+data.pname+"</td><td>"+data.price+"</td><td><img src="+data.img+" /></td>";
+			str+="</tr>";
+		}
+		document.getElementById("protbody").innerHTML=str;
+	</script>
+</body>
+</html>

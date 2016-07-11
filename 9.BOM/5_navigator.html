@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+		navigator各个浏览器可能不太一样
+		且navigator是可以修改的，所以不太可信
+	</pre>
+	<input type="button" value="显示浏览器信息" id="shownav" />
+	<script type="text/javascript">
+		document.getElementById("shownav").onclick=function(){
+			alert(
+				"浏览器信息：\n"+
+				"名称："+navigator.appName+"\n"+
+				"平台和版本："+navigator.appVersion+"\n"+
+				"操作系统："+navigator.platform+"\n"+
+				"userAgent："+navigator.userAgent+"\n"
+			);
+		}
+	</script>
+</body>
+</html>

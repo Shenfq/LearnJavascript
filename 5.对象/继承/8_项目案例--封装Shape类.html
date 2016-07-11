@@ -72,7 +72,7 @@
 				this.lines=lines;
 				return lines;
 			},
-			getperimeter:function(){
+			getPerimeter:function(){
 				var lines=this.getLine();
 				var perimeter=0;
 				for(var i=0;i<lines.length;i++){
@@ -80,7 +80,7 @@
 				}
 				return perimeter;
 			},
-			getarea:function(){
+			getArea:function(){
 				 
 			}
 		}
@@ -88,31 +88,50 @@
 		//创建一个三角形类，来通过继承shape画三角形
 		function Triangle(p1,p2,p3){
 			this.points=[p1,p2,p3];
-			this.getarea=function(){
-				var perimeter=this.getperimeter();
+			this.getArea=function(){
+				var perimeter=this.getPerimeter();
 				var p=perimeter/2;
 				var lines=this.getLine();
-				var area=Math.sqrt( p*(p-lines[0].length)*(p-lines[1].length)*(p-lines[2].length) );
-				return area;
+				return Math.sqrt( p*(p-lines[0].length)*(p-lines[1].length)*(p-lines[2].length) );
 			}
 		}
-		Triangle.prototype=new Shape();
 
-		//创建一个正方形类，来通过继承shape画正方形
+		//创建一个矩形类，来通过继承shape画矩形
+		function Rectangle(a,l,w){    //a表示第一个点，l表示长度，w表示宽度
+			var p2=new Point(a.x+l,a.y);
+			var p3=new Point(a.x+l,a.y+w);
+			var p4=new Point(a.x,a.y+w);
+			this.points=[a,p2,p3,p4];
+			this.getArea=function(){
+				return l*w;
+			}
+		}
+
+		//创建一个正方形类
+		//实现方法一：通过继承shape画正方形
 		function Square(p1,length){
-			this.points=[];
-			this.points[0]=p1;
-			this.points[1]=new Point(p1.x,p1.y+length);
-			this.points[2]=new Point(p1.x+length,p1.y+length);
-			this.points[3]=new Point(p1.x+length,p1.y);
-
-			this.getarea=function(){
-				var lines=this.getLine();
-				var area=Math.pow(lines[0].length,2);
-				return area;
+			var p2=new Point(p1.x,p1.y+length);
+			var p3=new Point(p1.x+length,p1.y+length);
+			var p4=new Point(p1.x+length,p1.y);
+			this.points=[p1,p2,p3,p4];
+			this.getArea=function(){
+				return Math.pow(length,2);
 			}
 		}
-		Square.prototype=new Shape();
+
+		//实现方法二：通过继承rectangle，创建一个square类
+		function Square2(a,l){
+			Rectangle.call(this,a,l,l);		//当调用Square2构造函数时，通过call方法来调用Rectangle的构造函数
+		}
+
+		//通过使用prototype实现继承
+		(function(){
+			var s=new Shape();
+			Triangle.prototype=s;
+			Rectangle.prototype=s;
+			Square.prototype=s;
+			Square2.prototype=s;
+		})();
 
 
 		//测试
@@ -120,13 +139,19 @@
 		var p2=new Point(250,80);
 		var p3=new Point(400,200);
 		var t1=new Triangle(p1,p2,p3);
-		console.log(t1.getarea());
+		console.log(t1.getArea());
 		t1.draw();
 
-		var p1=new Point(100,200);
-		var s1=new Square(p1,300);
-		console.log(s1.getarea());
+		var r1=new Rectangle(p1,300,300);
+		r1.draw();
+
+		var s1=new Square(p2,300);
 		s1.draw();
+
+		var s2=new Square2(p3,100);
+		s2.draw();
+
+		console.log(s1);
 	</script>
 </body>
 </html>

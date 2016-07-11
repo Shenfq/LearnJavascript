@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承Person</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Person.prototype={
+			showInfo:function(){
+				return this.name+"————"+this.age;
+			}
+		}
+		function Emp(name,age,salary){
+			this.salary=salary;
+			Person.call(this,name,age);
+			this.pay=function(){
+				return this.name+"————"+this.age+"————"+this.salary;
+			}
+		}
+
+		Emp.prototype=new Person();
+
+		var emp=new Emp("smith",20,5000);
+
+		console.log(emp.showInfo());
+		console.log(emp.pay());
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box1">点击获取URL信息</div>
+	<div id="box2">点击跳转到百度</div>
+	<script type="text/javascript">
+		var box1=document.getElementById("box1");
+		box1.onclick=function(){
+			alert(
+				"当前URL信息："+"\n"+
+				"URL:"+location.url+"\n"+
+				"域名："+location.host+"\n"+
+				"主域名："+location.hostname+"\n"+
+				"路径："+location.pathname+"\n"+
+				"协议："+location.protocol+"\n"+
+				"参数："+location.search+"\n"+
+				"端口："+location.port+"\n"+
+				"hash："+location.hash+"\n"
+			);
+		}
+	</script>
+</body>
+</html>

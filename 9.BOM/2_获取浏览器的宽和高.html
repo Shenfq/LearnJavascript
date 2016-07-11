@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//window.innerWidth:用于ie8+   ff   chrome；      clientWidth：用于兼容低版本ie678
+		var width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+		var height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight;
+
+		document.write(width+"--"+height);
+	</script>
+</body>
+</html>

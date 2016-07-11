@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>YcTable</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function YcTable(data){
+			this.data=data;
+		}
+
+		YcTable.prototype={
+			showTable:function(){
+				var tab=document.createElement("table");
+				tab.setAttribute("border", "1");
+				tab.setAttribute("cellSpacing", "0");
+				tab.setAttribute("width", "300");
+				var tr_top=document.createElement("tr");
+				var Names=this.getColumNames();
+				for(var i=0;i<Names.length;i++){
+					var th=document.createElement("th");
+					th.innerHTML=Names[i];
+					tr_top.appendChild(th);
+				}
+				tab.appendChild(tr_top);
+				for(var i=0;i<this.data.length;i++){
+					var tr=document.createElement("tr");
+					for(ind in this.data[i]){
+						var td=document.createElement("td");
+						td.innerHTML=this.data[i][ind];
+						tr.appendChild(td);
+					}
+					tab.appendChild(tr);
+				}
+				document.body.appendChild(tab);
+			},
+			getTotal:function(){
+				return this.data.length;
+			},
+			getColumCount:function(){
+				// var length=0;
+				// for(ind in this.data[0]){
+				// 	length++;
+				// }
+				// return length;
+				return Object.keys(this.data[0]).length;
+			},
+			getColumNames:function(){
+				// var Names=[];
+				// for(ind in this.data[0]){
+				// 	Names.push(ind);
+				// }
+				// return Names;
+				return Object.keys(this.data[0]);
+			},
+			getValue:function(){
+				var Values=[];
+				for(var i=0;i<this.data.length;i++){
+					for(ind in this.data[i]){
+						Values.push(this.data[i][ind]);
+					}
+				}
+				return Values;
+			}
+		}
+
+		var data=[
+			{"name":"sfq","age":"20"},
+			{"name":"smith","age":"22"},
+			{"name":"tom","age":"18"},
+			{"name":"jack","age":"23"}
+		];
+		var table=new YcTable(data);
+		console.log(table.getTotal());
+		console.log(table.getColumCount());
+		console.log(table.getColumNames());
+		console.log(table.getValue());
+		table.showTable();
+	</script>
+</body>
+</html>

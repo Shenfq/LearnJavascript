@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.html</title>
+</head>
+<body>
+	<a href="bb.html">bb.html</a>
+	<a href="c.html">c.html</a>
+	<div onclick="javascript:history.forward()">前进</div>
+	<div onclick="javascript:history.back()">后退</div>
+	<input type="text" id="num"><input type="button" id="btn">
+	<script type="text/javascript">
+		document.getElementById("btn").onclick=function(){
+			history.go(document.getElementById("num").value);
+		}
+	</script>
+</body>
+</html>

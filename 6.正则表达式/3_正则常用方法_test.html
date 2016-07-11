@@ -7,8 +7,8 @@
 <body>
 	<script type="text/javascript">
 		//test,search,match,replace
-		//regext.text(字符串)   字符串的判断    返回真假
-		var reg=/a/;
+		//RegExp.text(字符串)   字符串的判断    返回真假
+		var reg=/d/;
 		var str="abcdef";
 		console.log(reg.test(str));  //返回true
 		
@@ -33,7 +33,7 @@
 
 		var str="a.b";
 		var reg=/.+/;
-		console.log(reg.test(str));
+		console.log(reg.test(str));//查找对应的字符串中是否存在
 
 		var str="ab cde";
 		var reg=/\bab/g;

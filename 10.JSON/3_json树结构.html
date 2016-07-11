@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var list=[{
+		"id":1,
+		"text":"后台管理",
+		"sonItems":[
+			{
+				"id":11,
+				"text":"用户管理",
+				"sonItems":[
+					{"id":111,"text":"用户浏览","link":"http://www.baidu.com"},
+					{"id":112,"text":"VIP客户","link":"http://www.baidu.com"},
+					{"id":113,"text":"通知","link":"http://www.baidu.com"}
+				]
+			},
+			{
+				"id":12,
+				"text":"平台信息",
+				"sonItems":[
+					{"id":121,"text":"系统平台","link":"http://www.baidu.com"},
+					{"id":122,"text":"友情链接","link":"http://www.baidu.com"},
+					{"id":123,"text":"流量分析","link":"http://www.baidu.com"}
+				]
+			},
+			{
+				"id":13,
+				"text":"商品管理",
+				"sonItems":[
+					{"id":131,"text":"商品浏览","link":"http://www.baidu.com"}
+				]
+			},
+			{
+				"id":14,
+				"text":"订单管理",
+				"sonItems":[
+					{"id":141,"text":"订单浏览","link":"http://www.baidu.com"},
+					{"id":142,"text":"历史订单","link":"http://www.baidu.com"}
+				]
+			}
+		]
+	 }];
+	//创建一个树节点对象
+	function TreeItem(text,icon,link){
+		this.text=text;
+		this.icon=icon;
+		this.link=link;
+		this.sonItems=[];
+	}
+
+	TreeItem.prototype={
+		addSonItem:function ( sonItem ){
+			this.sonItems.push(sonItem);		//用来添加子节点
+		},
+		getSonItemCount:function(){
+			return this.sonItems.length;	//查看子节点的个数
+		},
+		getAllSonItem:function(){
+			return this.sonItems;
+		},
+		showItem:function( parentNode ){
+			var root=document.createElement("li");
+			var txt=document.createTextNode(this.text);
+			if(this.sonItems.length<=0){
+				if(this.link){
+					var a=document.createElement("a");
+					a.href=this.link;
+					a.appendChild(txt);
+					root.appendChild(a);
+				}else{
+					root.appendChild(txt);
+				}
+				parentNode.appendChild(root);
+				return ;
+			}
+			root.appendChild(txt);
+			var ulnode=document.createElement("ul");
+			root.appendChild(ulnode);
+			for(var i=0;i<this.sonItems.length;i++){
+				var si=this.sonItems[i];
+				si.showItem(ulnode);
+			}
+			parentNode.appendChild(root);
+		}
+	};
+
+	var result="[{\"id\":1,\"text\":\"后台管理\",\"icon\":\"star\",\"sonItems\":[{\"id\":11,\"text\":\"用户管理\",\"icon\":\"star\",\"sonItems\":[{\"id\":111,\"text\":\"用户浏览\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"},{\"id\":112,\"text\":\"VIP客户\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"},{\"id\":113,\"text\":\"通知\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"}]},{\"id\":12,\"text\":\"平台信息\",\"icon\":\"star\",\"sonItems\":[{\"id\":121,\"text\":\"系统平台\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"},{\"id\":122,\"text\":\"友情链接\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"},{\"id\":123,\"text\":\"流量分析\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"}]},{\"id\":13,\"text\":\"商品管理\",\"icon\":\"star\",\"sonItems\":[{\"id\":131,\"text\":\"商品浏览\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"}]},{\"id\":14,\"text\":\"订单管理\",\"icon\":\"star\",\"sonItems\":[{\"id\":141,\"text\":\"订单浏览\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"},{\"id\":142,\"text\":\"历史订单\",\"icon\":\"star\",\"link\":\"http://www.baidu.com\"}]}]}]";
+
+	function walk(parentNode,jsonarray){//递归，将root的所有子节点添加进去
+		for(var i=0;i<jsonarray.length;i++){
+			var jsonobject=jsonarray[i];
+			var sonNode=new TreeItem(jsonobject.text,jsonobject.icon,jsonobject.link);
+			parentNode.addSonItem(sonNode);
+			if(jsonobject.sonItems!=null&&jsonobject.sonItems.length>0){
+				walk(sonNode,jsonobject.sonItems);
+			}
+		}
+	}
+	var jsonarray=eval("("+result+")");
+	var root;
+	if(jsonarray!=null&&jsonarray.length>0){
+		var rootobject=jsonarray[0];
+		root=new TreeItem(rootobject.text,rootobject.icon,rootobject.link);
+		if(rootobject.sonItems!=null&&rootobject.sonItems.length>0){
+			walk(root,rootobject.sonItems);
+		}
+	}
+	root.showItem(document.body);
+
+	</script>
+</body>
+</html>

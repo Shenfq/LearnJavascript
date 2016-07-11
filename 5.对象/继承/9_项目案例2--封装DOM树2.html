@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>树节点的绘制</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//创建一个树节点对象
+		function TreeItem(text,link,icon){
+			this.text=text;
+			this.icon=icon;
+			this.link=link;
+			this.sonItems=[];
+		}
+
+		TreeItem.prototype={
+			addSonItem:function ( sonItem ){
+				this.sonItems.push(sonItem);		//用来添加子节点
+			},
+			getSonItemCount:function(){
+				return this.sonItems.length;	//查看子节点的个数
+			},
+			getAllSonItem:function(){
+				return this.sonItems;
+			},
+			showItem:function( parentNode ){
+				var root=document.createElement("li");
+				var txt=document.createTextNode(this.text);
+				if(this.sonItems.length<=0){
+					if(this.link){
+						var a=document.createElement("a");
+						a.href="this.link";
+						a.appendChild(txt);
+						root.appendChild(a);
+					}else{
+						root.appendChild(txt);
+					}
+					parentNode.appendChild(root);
+					return ;
+				}
+				root.appendChild(txt);
+				var ulnode=document.createElement("ul");
+				root.appendChild(ulnode);
+				for(var i=0;i<this.sonItems.length;i++){
+					var si=this.sonItems[i];
+					si.showItem(ulnode);
+				}
+				parentNode.appendChild(root);
+			}
+		};
+
+		var root=new TreeItem('root','','');
+		var t1=new TreeItem('t1','','');
+		var t2=new TreeItem('t2','','');
+
+		var t11=new TreeItem('t11','www.baidu.com','');
+		var t12=new TreeItem('t12','','');
+		root.addSonItem(t1);
+		root.addSonItem(t2);
+		t1.addSonItem(t11);
+		t1.addSonItem(t12);
+		console.log(root.getSonItemCount());
+		root.showItem(document.body);
+	</script>
+</body>
+</html>

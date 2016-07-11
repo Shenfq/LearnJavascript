@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="获取浏览器尺寸" id="btn" />
+	<script type="text/javascript">
+		document.getElementById("btn").onclick=function(){
+			alert(
+				"屏幕信息：\n"+
+				"屏幕分辨率："+screen.width+"x"+screen.height+"\n"+
+				"可用区域："+screen.availWidth+"x"+screen.availHeight+"\n"
+			);
+		}
+	</script>
+</body>
+</html>

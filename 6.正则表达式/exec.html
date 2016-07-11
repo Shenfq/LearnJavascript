@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//exec 查找并返回当前的匹配结果，并以数组的形式返回。
+		//如果不存在，则 arr 为 null，否则 arr 总是一个长度为 1 的数组，其值就是当前匹配项。
+		//arr 还有三个属性：index 当前匹配项的位置；lastIndex 当前匹配项结束的位置（index + 当前匹配项的长度）；input 如上示例中 input 就是 str
+		//exec 方法受参数 g 的影响。若指定了 g，则下次调用 exec 时，会从上个匹配的 lastIndex 开始查找。
+		var str = "1a1b1c";
+		var reg = new RegExp("1.", "g");
+		var arr = reg.exec(str);
+		var arr2 = reg.exec(str);
+		var arr3 = reg.exec(str);
+		var arr4 = reg.exec(str);
+		console.log(arr);
+		console.log(arr2);
+		console.log(arr3);
+		console.log(arr4);
+	</script>
+</body>
+</html>

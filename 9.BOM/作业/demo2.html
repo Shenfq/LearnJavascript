@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo2</title>
+</head>
+<body>
+	省份：<input type="text" name="province" id="province" value=""><br/><br/>
+	市&nbsp;：<input type="text" name="city" id="city" value=""><br/><br/>
+	<input type="button" id="btn1" value="确认">
+	<input type="button" id="btn2" value="取消">
+	<script type="text/javascript">
+		var province=document.getElementById("province");
+		var city=document.getElementById("city");
+		document.getElementById("btn1").onclick=function(){
+			window.returnValue=province.value+city.value;
+			close();
+		}
+		document.getElementById("btn2").onclick=function(){
+			window.returnValue=false;
+			close();
+		}
+	</script>
+</body>
+</html>
