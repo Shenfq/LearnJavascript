@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="a.css">
+	<link rel="stylesheet" href="main.css">
+	<style>
+		.abc{
+			color:blue;
+		}
+	</style>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<p id="txt" class="a">css</p>
+	<p id="txt" class="b">css</p>
+	<span class="abc">aaa</span>
+	<script type="text/javascript">
+		//var a=yc.getStyleSheets("main.css");
+		//console.log(a);
+		yc.addStyleSheet("main.css");
+		yc.removeStyleSheet("main.css");
+	</script>
+</body>
+</html>

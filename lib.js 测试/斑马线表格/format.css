@@ -1,0 +1,28 @@
+body{
+	background-color: #fff;
+	color: #000;
+	font-family: "微软雅黑";
+}
+table{
+	margin: auto;
+	border:1px solid #699;
+}
+caption{
+	margin: auto;
+	padding:.2em;
+	font-size:1.2em;
+	font-weight: bold;
+}
+th{
+	font-weight: normal;
+	font-style: italic;
+	text-align: left;
+	background-color:#9cc ;
+	color: #000;
+}
+th,td{
+	width: 10em;
+	padding:.5em;
+}
+tr:nth-child(odd){background: #ffc;}
+tr:nth-child(even){background: #fff;}

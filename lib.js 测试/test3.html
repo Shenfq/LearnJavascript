@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// var obj=yc.parseJSON('{"name":"a","age":20}');
+		// alert(obj.name+"   "+obj.age);
+
+		// var obj2=yc.parseJSON('{"name":"a","age":20,"date":200000}',function(key,value){
+		// 	return key.indexOf('date') >=0 ? new Date(value) : value});
+		// alert(obj2.name+"   "+obj2.age+"   "+obj2.date);
+
+		// var obj3=yc.parseJSON('{"name":"a","age":-20}',function(key,value){
+		// 	return (key=="age" && value<0)?-value:value;});
+		// alert(obj3.name+"   "+obj3.age);
+
+		var obj3= yc.parseJSON('{"name":"a","age":20,"address":{"prvince":"湖南","postcode":"12345678"}}',
+			function(k,v){
+				//var result;
+				// if(k=="postcode"){
+				// 	if(v.length!=6){
+				// 		result="未知编码";
+				// 	}else{
+				// 		result=v;
+				// 	}
+				// }
+				return k=="postcode" ? (v.length!=6?"未知编码":v) : v;
+			});
+		alert(obj3.name+"   "+obj3.age+"   "+obj3.address.postcode);
+	</script>
+</body>
+</html>

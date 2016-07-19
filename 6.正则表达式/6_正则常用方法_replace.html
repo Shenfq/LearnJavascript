@@ -25,5 +25,17 @@
 		); 
 		document.write(uw+"<br />");//I Am A Boy
 
+
+		var str="2016-5-19";
+		var reg=/(\d+)(-)/g;
+		// str.replace(reg,function($0){
+		// 	alert($0);
+		// });
+		str.replace(reg,function($0,$1,$2,$3){
+			document.write($0+"<br />");
+			document.write($1+"<br />");
+			document.write($2+"<br />");
+			document.write($3+"<br />");
+		});
 	</script>
 </html>

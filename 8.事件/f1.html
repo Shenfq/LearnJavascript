@@ -14,7 +14,7 @@
 		var div=document.getElementById("oDiv");
 		var p=document.getElementById("oP");
 		var span=document.getElementById("oSpan");
-		//DOM事件流
+		//DOM事件流    span->p->div
 		// div.onclick=function(){
 		// 	alert("div被点击了");
 		// }
@@ -25,7 +25,7 @@
 		// 	alert("span被点击了");
 		// }
 
-		//事件捕获
+		//事件捕获    div->p->span
 		div.addEventListener("click",function(){
 			alert("div被点击");
 		},true);//如果设置为true，表示在事件捕获阶段被捕获

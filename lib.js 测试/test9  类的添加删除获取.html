@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+	<style>
+		.abc{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<p id="txt" class="q w e">css</p>
+	<span class="al">aaa</span>
+	<script type="text/javascript">
+		alert(yc.getClassNames("txt"));
+		yc.addClassName("txt","abc");
+		alert(yc.getClassNames("txt"));
+		alert(yc.hasClassName("txt","abc"));
+		alert(yc.removeClassName("txt","abc"));
+		alert(yc.getClassNames("txt"));
+	</script>
+</body>
+</html>

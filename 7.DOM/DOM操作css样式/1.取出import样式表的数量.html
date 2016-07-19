@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		@import "a.css";
+	</style>
+	<style type="text/css">
+		@import "a.css";
+		@import "b.css";
+	</style>
+	<script type="text/javascript">
+		function show(){
+			var stylesheetcouns=0;
+			if(document.styleSheets[0].imports){
+				for(var i=0;i<document.styleSheets.length;i++){
+					stylesheetcouns+=document.styleSheets[i].imports.length;
+				}
+			}else{
+				for(var i=0;i<document.styleSheets.length;i++){
+					var cssrules=document.styleSheets[i].cssRules;
+					for(var j=0;j<cssrules.length;j++){
+						var rule=cssrules[j];
+						if(rule.type==3){
+							stylesheetcouns++;
+						}
+					}
+				}
+			}
+			alert(stylesheetcouns);
+		}
+	</script>
+</head>
+<body onload="show()">
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<button id="btn">点击弹出</button>
+	<script type="text/javascript">
+		function show(){
+			alert("弹框");
+		}
+		yc.addEvent("btn","click",show);
+		yc.removeEvent("btn","click",show);
+	</script>
+</body>
+</html>

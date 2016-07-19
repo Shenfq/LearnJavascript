@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片浏览</title>
+	<link rel="stylesheet" href="layout.css" type="text/css" />
+</head>
+<body>
+	<h1>图片浏览</h1>
+	<ul>
+		<li><a href="#" onclick="showPic(this,'images/1.jpg'); return false;" title="桃花">桃花</a></li>
+		<li><a href="#" onclick="showPic(this,'images/2.jpg'); return false;" title="玫瑰">玫瑰</a></li>
+	</ul>
+	<img id="placeholder" src="images/placeholder.png" alt="图片浏览" />
+	<p id="description">请选择一张图</p>
+	<script type="text/javascript" src="../../lib.js"></script>
+	<script type="text/javascript">
+		function showPic(ele,src){
+			var img=yc.$("placeholder");
+			var des=yc.$("description");
+			img.src=src;
+			des.innerHTML=ele.title;
+		}
+	</script>
+</body>
+</html>

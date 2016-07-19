@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<div id="box">
+		<p id="a">html</p>
+		<div id="b">css</div>
+		<p id="c">javascript <span class="al">java</span></p>
+	</div>
+
+	<p id="d">css</p>
+	<span class="al">aaa</span>
+	<script type="text/javascript">
+		//alert(yc.camelize("font-size"));
+		//alert(yc.uncamelize("fontSize"));
+		var styles1={"color":"red","font-size":"25px","backgroundColor":"blue"};
+		// var styles2={"color":"blue","fontSize":"25px","background-color":"red"};
+		// yc.setStyle("a",styles1);
+		// yc.setStyleById("b",styles2);
+		//yc.setStyleByTagName("div",styles1);
+		yc.setStyleByClassName(styles1,"al","span","c");
+	</script>
+</body>
+</html>

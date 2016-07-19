@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<button id="btn">显示/隐藏</button>
+	<div id="box">xxxxxxxxxxxxxxxxxxxxxx</div>
+	<script type="text/javascript">
+		var a=function(){
+			yc.toggleDisplay("box","block");
+		}
+		yc.addEvent("btn","mouseover",a);
+		yc.addEvent("btn","mouseout",a);
+	</script>
+</body>
+</html>

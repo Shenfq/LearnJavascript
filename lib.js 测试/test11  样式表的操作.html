@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="a.css">
+	<link rel="stylesheet" href="main.css">
+	<style>
+		.abc{
+			color:blue;
+			font-size: 25px;
+			background-color:gray;
+		}
+	</style>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<p id="txt1" class="a">css</p>
+	<p id="txt2" class="b">css</p>
+	<span class="abc">aaa</span>
+	<script type="text/javascript">
+		var styles={"font-size":"24px","background-color":"gray"};
+		var styles2={"font-size":"12px","color":"black"};
+		yc.addCSSRule(".a",styles,0,"a.css");
+		yc.editCSSRule(".a",styles2,"a.css");
+		alert( yc.getStyle("txt1","color") );
+	</script>
+</body>
+</html>

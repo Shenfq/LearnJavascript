@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.a{
+			color:red;
+			font-size:25px;
+			background-color:black; 
+		}
+	</style>
+</head>
+<body>
+	<div class="a" id="b">test txt</div>
+	<button onclick='alert(compute("b","background-color"))'>显示样式</button>
+	<script type="text/javascript">
+		function compute(ele,attr){
+			var eleobj=document.getElementById(ele);
+			var computedStyle;
+			if(eleobj.currentStyle){//ie
+				computedStyle=eleobj.currentStyle;
+			}else{//w3c
+				computedStyle=document.defaultView.getComputedStyle(eleobj,false);
+			}
+			return computedStyle[attr];
+		}
+	</script>
+</body>
+</html>

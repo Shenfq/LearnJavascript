@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var person=new Object();
+		person.name="smith";
+		person.age=30;
+		person.sex="女";
+		//person.hobby=["篮球","游泳"];
+		//person.obj={"a":123,"b":"abc"};
+
+		var person2=new Object();
+		person2.name="\"tom";
+		person2.age=28;
+		person2.sex="男";
+		person2.a=true;
+
+		var arr=[];
+		arr.push(person);
+		arr.push(person2);
+		document.writeln(person.toJSONString());
+		document.writeln(arr.toJSONString());
+	</script>
+</body>
+</html>

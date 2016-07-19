@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="main.css">
+	<style type="text/css">
+		@import "a.css";
+		.my{
+			font-size: 10px;
+		}		
+	</style>
+
+</head>
+<body>
+	<script type="text/javascript">
+		function getSheets(){
+			var styleCollection=[];//所有样式表的集合
+			var indexedStylesheets=0;
+			for(var i=0;i<document.styleSheets.length;i++){
+				styleCollection[styleCollection.length]=document.styleSheets[i];
+			}
+			while(indexedStylesheets<styleCollection.length){
+				for(var i=indexedStylesheets;i<styleCollection.length;i++){
+					indexedStylesheets+=1;
+					if(styleCollection[i].cssRules){
+						//w3c
+						for(var x=0;x<styleCollection[i].cssRules.length;x++){
+							if(styleCollection[i].cssRules[x].type==3){
+								styleCollection[styleCollection.length]=styleCollection[i].cssRules[x].styleSheet;
+							}
+						}
+					}else{
+						//ie
+						for(var x=0;x<styleCollection[i].imports.length;x++){
+							styleCollection[styleCollection.length]=styleCollection[i].imports[x];
+						}
+					}
+				}
+			}
+			//console.log(styleCollection);
+			return styleCollection;
+		}
+		
+
+		function searchRule(searchString,exact){
+			//exact:   true 精确查找    false 模糊查找
+			//searchString  要查找的选择器名
+			var stylesheetlist=getSheets();   //获取所有的样式表
+			var rulelist=[];//匹配规则
+			for(var i=0;i<stylesheetlist.length;i++){
+				//遍历所有的样式表
+				var ruleSet=stylesheetlist[i].rules||stylesheetlist[i].cssRules;//取出每个样式表的规则
+				//rules :ie       cssRules :w3c 
+				//console.log(ruleSet);
+				for(var j=0;j<ruleSet.length;j++){
+					if(ruleSet[j].selectorText){//@import不存在selectorText属性
+						if(exact&&ruleSet[j].selectorText==searchString){
+							rulelist.push(ruleSet[j]);
+						}else if(!exact && (ruleSet[j].selectorText.indexOf(searchString)>-1)){
+							rulelist.push(ruleSet[j]);
+						}
+					}
+					
+				}
+			}
+			return rulelist;
+		}
+
+		//console.log("模糊搜索："+searchRule(".my",false));
+		//console.log("准确搜索："+searchRule(".my",true));
+		if(document.styleSheets[1].cssRules[0].selectorText){
+			alert("a");
+			console.log(document.styleSheets[1].cssRules[0].selectorText);
+		}else{
+			alert("b");
+			console.log(document.styleSheets[1].cssRules[0]);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="main.css">
+	<style type="text/css">
+		@import "a.css";
+	</style>
+
+</head>
+<body onload="show()">
+	<script type="text/javascript">
+		function getSheets(){
+			var styleCollection=[];//所有样式表的集合
+			var indexedStylesheets=0;
+			for(var i=0;i<document.styleSheets.length;i++){
+				styleCollection[styleCollection.length]=document.styleSheets[i];
+			}
+			while(indexedStylesheets<styleCollection.length){
+				for(var i=indexedStylesheets;i<styleCollection.length;i++){
+					indexedStylesheets+=1;
+					if(styleCollection[i].cssRules){
+						//w3c
+						for(var x=0;x<styleCollection[i].cssRules.length;x++){
+							if(styleCollection[i].cssRules[x].type==3){
+								styleCollection[styleCollection.length]=styleCollection[i].cssRules[x].styleSheet;
+							}
+						}
+					}else{
+						//ie
+						for(var x=0;x<styleCollection[i].imports.length;x++){
+							styleCollection[styleCollection.length]=styleCollection[i].imports[x];
+						}
+					}
+				}
+			}
+			return styleCollection;
+		}
+		function show(){
+			var sheets=getSheets();
+			for(var i=0;i<sheets.length;i++){
+				console.log(sheets[i]);
+			}
+		}
+	</script>
+</body>
+</html>

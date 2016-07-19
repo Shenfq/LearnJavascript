@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<div>a</div>
+	<div>b</div>
+	<div id="b">
+		<p>1</p>
+		<p>2</p>
+	</div>
+	<div id="c">c</div>
+
+	<div>e</div>
+	<script type="text/javascript">
+		var newNode=document.createElement("div");
+		var txt=document.createTextNode("d");
+		newNode.appendChild(txt);
+		yc.insertAfter(newNode,"c");
+
+
+		var newChild=document.createElement("p");
+		var txt=document.createTextNode("0");
+		newChild.appendChild(txt);
+		yc.prependChild("b",newChild);
+		//yc.removeChildren("b");
+	</script>
+</body>
+</html>

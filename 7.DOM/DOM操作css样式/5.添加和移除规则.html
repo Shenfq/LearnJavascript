@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="a">test txt</div>
+
+	<script type="text/javascript">
+		function addNewRule(selector,ruleText){
+			var cssObj;
+			if(document.styleSheets.length>0){
+				cssObj=document.stylesheets[0];
+			}else{
+				if(document.createStyleSheet){//ie
+					cssObj=document.createStyleSheet();//相当于在文本中创建一个<style>
+				}else{
+					var ss=document.createElement("style");
+					ss.type="text/css";
+					document.getElementsByTagName("head")[0].appendChild(ss);
+					cssObj=document.styleSheets[0];
+				}
+			}
+			if(cssObj.addRule){//ie
+				cssObj.addRule(selector,ruleText);
+			}else{//w3c
+				cssObj.insertRule(selector+"{"+ruleText+"}",0)
+			}
+		}
+		function delRule(){
+			var styleObj=document.styleSheets[0];
+			if(styleObj.cssRules){
+				styleObj.deleteRule(styleObj.cssRules.length-1);
+			}else{
+				styleObj.removeRule(styleObj.rules.length-1);
+			}
+		}
+		addNewRule(".a","color:red;font-size:20px;");
+		delRule();
+	</script>
+</body>
+</html>

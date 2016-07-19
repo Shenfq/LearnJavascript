@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../lib.js"></script>
+</head>
+<body>
+	<button class="a">显示/隐藏</button>
+	<div id="box1">
+		<div class="a b">xxxxxxxxxxxxx</div>
+		<div class="b a">xxxxxxxxxxxxx</div>
+		<div class="a c">xxxxxxxxxxxxx</div>
+		<button class="a">显示/隐藏</button>
+		<button class="a">显示/隐藏</button>
+	</div>
+	<div id="box2">
+		<div class=" a b c">xxxxxxxxxxxxx</div>
+		<div class="b c a">xxxxxxxxxxxxx</div>
+		<div class="b a c">xxxxxxxxxxxxx</div>
+		<div class="d a ">xxxxxxxxxxxxx</div>
+	</div>
+	<script type="text/javascript">
+		var classnodes1=yc.getElementsByClassName("a","*","box1");
+		var classnodes2=yc.getElementsByClassName("a","*","box2");
+		var classnodes3=yc.getElementsByClassName("a","div","box1");
+		// alert(classnodes1.length);
+		// alert(classnodes2.length);
+		// alert(classnodes3.length);
+		console.log(document.body.all);
+	</script>
+</body>
+</html>
