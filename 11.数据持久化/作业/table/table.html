@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<script src="../lib.js"></script>
+</head>
+<body>
+	<h1>添加学生</h1>
+	<hr>
+	<p>学号：<input type="text" name="sid" id="sid"></p>
+	<p>姓名：<input type="text" name="sname" id="sname"></p>
+	<p>年龄：<input type="text" name="age" id="age"></p>
+	<input type="button" id="btn" value="添加">
+	<hr>
+	<table border="1" width="500px">
+		<thead>
+			<tr>
+				<th>学生号</th>
+				<th>学生名</th>
+				<th>年龄</th>
+				<th>操作删除</th>
+			</tr>
+		</thead>
+		<tbody id="content">
+			
+		</tbody>
+	</table>
+	<hr>
+	<button id="delall">删除所有</button>
+	<script>
+		var btn,content,sid,sname,age,db;
+		btn=yc.$('btn');
+		content=yc.$('content');
+		sid=yc.$('sid');
+		sname=yc.$('sname');
+		age=yc.$('age');
+		yc.addLoadEvent(function(){
+			if(window.openDatabase){
+				db=openDatabase("student",1.0,"testdb",10000);
+				db.transaction(function(tx){
+					tx.executeSql("create table if not exists student(sid int auto_increment primary key,sname text,age int)",[]);
+				});
+			}
+		});
+		yc.addLoadEvent(function(){
+			var sql = "SELECT * FROM student";
+			db.transaction(function(tx){
+			    tx.executeSql(sql,[],function(tx, results){
+		            var len = results.rows.length;
+		            var rows=results.rows;
+		            console.log('Get '+len+' rows');
+	               	for (var i = 0; i < len; i++){
+	               		//将数据库中的数据插入到表格
+	              		var tr=document.createElement("tr");
+	              		
+	              		for(var tname in rows[i]){
+	              			if(rows[i].hasOwnProperty(tname)){
+	              				var td=document.createElement("td");
+	              				td.innerHTML=rows[i][tname];
+	              				tr.appendChild(td);
+	              			}
+	              		}
+
+	              		var del=document.createElement("td");
+	              		var delbtn=document.createElement("button");
+	              		delbtn.innerHTML="删除";
+	              		//为每行数据添加一个删除按钮，并绑定一个删除该行数据的事件
+	              		(function(index){
+	              			yc.addEvent(delbtn,"click",function(){
+	              				db.transaction(function(transaction){
+	              					transaction.executeSql("delete from student where sname=?",[rows[index].sname]);
+	              				});
+								window.location.href=window.location.href;
+	              			});
+	              		})(i);
+	              		
+	              		del.appendChild(delbtn);
+	              		tr.appendChild(del);
+	              		content.appendChild(tr);
+	            	}
+	            })
+	        });
+         });
+
+		
+		yc.addEvent(btn,"click",function(){//将一条数据插入到数据库
+			if(sname.value&&age.value){
+				db.transaction(function(tx){
+					tx.executeSql("insert into student(sid,sname,age) values("+sid.value+",'"+sname.value+"',"+age.value+")",[]);
+				});
+			}
+			window.location.href=window.location.href;
+		});
+		yc.addEvent("delall","click",function(){//删除表格中的所有数据
+			db.transaction(function(tx){
+				tx.executeSql("delete from student",[]);
+			});
+			window.location.href=window.location.href;
+		});
+	</script>
+</body>
+</html>

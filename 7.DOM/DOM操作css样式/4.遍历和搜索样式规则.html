@@ -61,21 +61,20 @@
 							rulelist.push(ruleSet[j]);
 						}
 					}
-					
 				}
 			}
 			return rulelist;
 		}
 
-		//console.log("模糊搜索："+searchRule(".my",false));
-		//console.log("准确搜索："+searchRule(".my",true));
-		if(document.styleSheets[1].cssRules[0].selectorText){
-			alert("a");
-			console.log(document.styleSheets[1].cssRules[0].selectorText);
-		}else{
-			alert("b");
-			console.log(document.styleSheets[1].cssRules[0]);
-		}
+		alert("模糊搜索："+searchRule(".my",false));
+		//alert("准确搜索："+searchRule(".my",true));
+		// if(document.styleSheets[1].cssRules[0].selectorText){
+		// 	alert("a");
+		// 	console.log(document.styleSheets[1].cssRules[0].selectorText);
+		// }else{
+		// 	alert("b");
+		// 	console.log(document.styleSheets[1].cssRules[0]);
+		// }
 	</script>
 </body>
 </html>

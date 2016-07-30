@@ -1,4 +1,4 @@
-扩展全局的window.Object.prototype=xxx
+//扩展全局的window.Object.prototype=xxx
 Object.prototype.toJSONString=function(){
 	//将一个对象的属性值以json的格式输出
 	var str="";

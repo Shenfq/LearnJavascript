@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面访问次数计算器</title>
+</head>
+<body>
+	<script>
+		if(window.name){
+			var val=parseInt(window.name);
+			val+=1;
+			window.name=val;
+		}else{
+			window.name=1;
+		}
+		document.write("页面访问次数："+window.name);
+	</script>
+</body>
+</html>

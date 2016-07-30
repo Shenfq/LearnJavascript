@@ -5,9 +5,8 @@
 	if(  !window.yc  ){
 		window.yc={};
 	}
-///////////////////////////////////////////////////////////////////////////////////////////
+
 //=======================================浏览器的检测======================================
-///////////////////////////////////////////////////////////////////////////////////////////
 	//判断当前浏览器是否兼容这个库：浏览器能力检测
 	function isCompatible(other){
 		if(other===false||!Array.prototype.push||!Object.hasOwnProperty||!document.createElement||!document.getElementsByTagName){
@@ -17,9 +16,7 @@
 	}
 	window["yc"]["isCompatible"]=isCompatible;
 
-///////////////////////////////////////////////////////////////////////////////////////////
 //========================================节点的获取======================================
-///////////////////////////////////////////////////////////////////////////////////////////
 	//通过id名获取节点,传入多个id名时返回一个数组
 	function $(){
 		var elements=[];
@@ -55,10 +52,7 @@
 	}
 	window["yc"]["getElementsByClassName"]=getElementsByClassName;
 
-//////////////////////////////////////////////////////////////////////////////////////////////
 //========================================DOM节点操作的补充======================================
-///////////////////////////////////////////////////////////////////////////////////////////
-
 	//插入一个节点到指定节点之后
 	function insertAfter(node,referenceNode){
 		if( !(node=$(node)) ){return false;}
@@ -96,9 +90,8 @@
 	}
 	window["yc"]["removeChildren"]=removeChildren;
 
-///////////////////////////////////////////////////////////////////////////////////////////
-//======================================事件的操作=======================================
-///////////////////////////////////////////////////////////////////////////////////////////
+
+//======================================事件的操作======================================
 	//事件添加  node 节点；type 事件类型；listener 监听器函数
 	function addEvent(node,type,listener){ 
 		if(!isCompatible()){return false;}
@@ -146,10 +139,7 @@
 	}
 	window["yc"]["addLoadEvent"]=addLoadEvent;
 
-///////////////////////////////////////////////////////////////////////////////////////////
 //========================================界面的操作======================================
-///////////////////////////////////////////////////////////////////////////////////////////
-
 	//添加一个显示与隐藏的开关
 	function toggleDisplay(node,value){
 		if( !(node=$(node)) ){return false;}
@@ -207,10 +197,7 @@
 	}
 	window["yc"]["moveElement"]=moveElement;
 
-///////////////////////////////////////////////////////////////////////////////////////////
 //========================================样式表的操作======================================
-///////////////////////////////////////////////////////////////////////////////////////////
-
 	function camelize(s){//将word-word 转换为 wordWord(驼峰命名法)
 		return s.replace(/-(\w)/g,function(strMatch,p1){return p1.toUpperCase();})
 	}
@@ -273,7 +260,7 @@
 		}
 		return false;
 	}
-	window["yc"]["hasClassName"]=hasClassName;
+	window["yc"]["hasClas   sName"]=hasClassName;
 
 	function addClassName(element,className){
 		if(!(element=$(element))){return false;}
@@ -299,11 +286,8 @@
 	}
 	window["yc"]["removeClassName"]=removeClassName;
 	
-///////////////////////////////////////////////////////////////////////////////////////////
-//==================================更大范围的操作样式表==================================
-///////////////////////////////////////////////////////////////////////////////////////////
-	function getStyleSheets(url,media){//"screen,print" 
-
+//========================更大范围的操作样式表================================
+	function getStyleSheets(url,media){//"screen print"
 		var sheets=[];
 		for(var i=0;i<document.styleSheets.length;i++){
 			var href=document.styleSheets[i].href;
@@ -311,11 +295,11 @@
 				continue;
 			}
 			if(media){
-				var media=media.replace(/\s*,\s*/,',');
+				media=media.replace(/\s*,\s*/,',');
 				var sheetMedia;
 				if(document.styleSheets[i].media.mediaText){//w3c
 					sheetMedia=document.styleSheets[i].media.mediaText.replace(/,\s*/,',');
-					sheetMedia=sheetMedia.replace(/,\s*$/,'');//apple  safari
+					sheetMedia=sheetMedia.replace(/,\s*$/,'');//s
 				}else{//ie
 					sheetMedia=document.styleSheets[i].media.replace(/,\s*/,',');
 				}
@@ -410,290 +394,45 @@
 	window["yc"]["getStyle"]=getStyle;
 	window["yc"]["getStyleById"]=getStyle;
 
-///////////////////////////////////////////////////////////////////////////////////////////
-//==========================================xml操作========================================
-///////////////////////////////////////////////////////////////////////////////////////////
-
-	function selectXMLNodes(xmlDoc,xpath){
-		if("ActiveXObject" in window){   //ie
-			xmlDoc.setProperty("SelectionLanguage","XPath");
-			return xmlDoc.documentElement.selectNodes(xpath);
-		}else{  //ff
-			var evaluator=new XPathEvaluator();
-			var resultSet=evaluator.evaluate(xpath,xmlDoc,null,XPathResult.ORDERED_NODE_ITERATOR_TYPE,null);
-			var finalArray=[];
-			if(resultSet){
-				var el=resultSet.iterateNext();
-				while(el){
-					finalArray.push(el);
-					el=resultSet.iterateNext();
-				}
-				return finalArray;
-			}
-		}
-	}
-	window["yc"]["selectXMLNodes"]=selectXMLNodes;
-
-	function getElementByIdXML(rootnode,id){
-		var nodeTags=rootnode.getElementsByTagName("*");
-		for(var i=0;i<nodeTags.length;i++){
-			if(   nodeTags[i].hasAttribute("id")  ){
-				if(nodeTags[i].getAttribute("id")==id){
-					return nodeTags[i];
-				}
-			}
-		}
-	}
-	window["yc"]["getElementByIdXML"]=getElementByIdXML;
-
-	function parseTextToXmlDomObjet(str){
-		var xmlDoc=null;
-		if("ActiveXObject" in window){
-			var xmlNames=["Msxml2.DOMDocument.6.0","Msxml2.DOMDocument.4.0","Msxml2.DOMDocument.3.0","Msxml2.DOMDocument","Microsoft.XMLDOM","Microsoft.XMLDom"];
-			for(var i=0;i<xmlNames.length;i++){
-				try{
-					var xmlDoc=new ActiveXObject(xmlNames[i]);
-					break;
-				}catch(e){
-
-				}
-			}
-			xmlDoc.async=false;
-			xmlDoc.loadXML(str);
-		}else{
-			try{
-				var parser=new DOMParser();
-				xmlDoc=parser.parseFromString(str,"text/xml");
-			}catch(x){
-				alert(x.message);
-				return ;
-			}
-		}
-		return xmlDoc;
-	}
-	window["yc"]["parseTextToXmlDomObjet"]=parseTextToXmlDomObjet;
-
-	function parseXmlDomObjectToText(xmlDOM){
-		if(xmlDOM.xml){
-			return xmlDOM.xml;
-		}else{
-			var serializer=new XMLSerializer();
-			return serializer.serializeToString(xmlDOM,"text/xml");
-		}
-	}
-	window["yc"]["parseXmlDomObjectToText"]=parseXmlDomObjectToText;
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-//========================================ajax封装======================================
-///////////////////////////////////////////////////////////////////////////////////////////
-	function addUrlParam(url,name,value){
-		url+=(url.indexOf("?")==-1? "?" : "&");
-		url+=encodeURIComponent(name)+"="+encodeURIComponent(value);
-		return url;
-	}
-	window["yc"]["addUrlParam"]=addUrlParam;
-
-
-	function serialize(form){
-		var parts=new Array();
-		var field=null;
-		for(var i=0;i<form.elements.length;i++){
-			field=form.elements[i];
-			switch(field.type){
-				case "select-one":
-				case "select-multiple":
-					for(var j=0;j<field.options.length;j++){
-						var option=field.options[j];
-						if(option.selected){
-							var optValue="";
-							if(option.hasAttribute){
-								optValue=(option.hasAttribute("value") ? option.value : option.text);
-							}else {
-								optValue=(option.attribute["value"].sepcified ? option.value : option.text );
-							}
-							parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
-						}
-					}
-					break;
-				case undefined:
-				case "file":
-				case "submit":
-				case "reset":
-				case "button":
-					break;
-				case "radio":
-				case "checkbox":
-					if(!field.checked){
-						break;
-					}
-				default:
-					parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
-			}
-		}
-		return parts.join("&");
-	}
-	window["yc"]["serialize"]=serialize;
-
-
-	function getRequestobject(url,options){
-		var req=false;
-		if(window.XMLHttpRequest){
-			var req=new window.XMLHttpRequest();
-		}else if(window.ActiveXObject){
-			var req=new window.ActiveXObject('Microsoft.XMLHTTP');
-		}
-		if(!req) return false;
-		options=options || {};
-		options.method=option.method||"POST";
-		options.send=options.send||null;
-
-		req.onreadystatechange=function(){
-			switch(req.readyState){
-				case 1://请求初始化时
-					if(options.loadListener){
-						options.loadListener.apple(req,arguments);
-					}
-					break;
-				case 2://加载完成
-					if(options.loadedListener){
-						options.loadedListener.apple(req,arguments);
-					}
-					break;
-				case 3://交互
-					if(options.inseractiveListener){
-						options.inseractiveListener.apple(req,arguments);
-					}
-					break;
-				case 4://完成交互时的回调操作
-					try{
-						if(req.status&&req.status==200){
-							var contentType=req.getResponseHeader("content-Type");
-							var mineType=contentType.match(/\s*([^;]+)\s*(;|$)/i)[1];
-							switch(mineType){
-								case "text/javascript":
-								case "application/javascript":
-									if(options.jsResponseListener){
-										options.jsResponseListener.call(req,req.responseText);
-									}
-									break;
-								case "application/json":
-									if(options.jsonResponseListener){
-										try{
-											var json = parseJSON(req.responseText);
-										}catch(e){
-											var json=false;
-										}
-										options.jsonResponseListener.call(req,json);
-									}
-									break;
-								case "text/xml":
-								case "application/xml":
-								case "application/xhtml+xml":
-									if(option.xmlResponseListener){
-										options.xmlResponseListener.call(req,req.responseXML);
-									}
-									break;
-								case "text/html":
-									if(options.htmlResponseListener){
-										options.htmlResponseListener.call(req,req.responseText);
-									}
-									break;
-							}
-							if(options.completeListener){
-								options.completeListener.apply(req,arguments);
-							}
-						}
-					}
-			}
-		}
-	}
-
-	function ajaxRequest(url,options){
-		var req=getRequestobject(url,options);
-		req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		return req.send(options.send);
-	}
-	window["yc"]["ajaxRequest"]=ajaxRequest;
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
 //========================================JSON的操作======================================
-///////////////////////////////////////////////////////////////////////////////////////////
-		//将一个json格式的字符串转换成一个对象，且带过滤功能
-		// function parseJSON(str,filter){
-		// 	//var obj=JSON.parse(str);
-		// 	var obj=eval("("+str+")");
-		// 	var objfilter=function(obj){
-		// 		for(var i in obj){
-		// 			if(obj!=null && typeof obj[i]=="object"){
-		// 				objfilter(obj[i]);
-		// 			}else if(filter!=null && typeof filter=="function"){
-		// 				obj[i]=filter(i,obj[i]);
-		// 			}
-		// 		}
-		// 	}
-		// 	objfilter(obj);
-		// 	return obj;
-		// }
-
-		// function parseJSON(str,filter){
-		// 	var result=eval("("+str+")");
-		// 	if(filter!=null&& typeof(filter)=="function"){
-		// 		for(var i in result){
-		// 			//alert(typeof(result[i]));
-		// 			if(typeof(result[i])=='object' && typeof result[i]!="function"){
-		// 				var jsonstr=JSON.stringify(result[i]);
-		// 				result[i]=parseJSON(jsonstr,filter);
-		// 			}else{
-		// 				result[i]=filter(i,result[i]);
-		// 			}
-		// 		}
-		// 	}
-		// 	console.log(result);
-		// 	return result;
-		// }
-
-		function parseJSON(s,filter){
-			var j;
-			function walk(k,v){
-				var i;
-				if(v && typeof v==="object"){
-					for(i in v){
-						if(v.hasOwnProperty(i)){
-							v[i]=walk(i,v[i]);
-						}
-					}
+	//将一个json格式的字符串转换成一个对象，且带过滤功能
+	function parseJSON(str,filter){
+		//var obj=JSON.parse(str);
+		var obj=eval("("+str+")");
+		var objfilter=function(obj){
+			for(var i in obj){
+				if(obj!=null && typeof obj[i]=="object"){
+					objfilter(obj[i]);
+				}else if(filter!=null && typeof filter=="function"){
+					obj[i]=filter(i,obj[i]);
 				}
-				return filter(k,v);
 			}
-			if(/^(["'](\\.|[^"\\\n\r])*?["']|[,:{}\[\]0-9.\-+Eaeflnr-u\n\r\t])+?$/.test(s)){
-				try{
-					j=eval('('+ s +')');
-				}catch(e){
-					throw new SyntaxError("eval  parseJSON");
-				}
-			}else{
-				throw new SyntaxError("parseJSON");
-			}
-			if(typeof filter === "function"){
-				j=walk('',j);
-			}
-			return j;
 		}
+		objfilter(obj);
+		return obj;
+	}
 
-		window["yc"]["parseJSON"]=parseJSON;
-
-
+	// function parseJSON(str,filter){
+	// 	var result=eval("("+str+")");
+	// 	if(filter!=null&& typeof(filter)=="function"){
+	// 		for(var i in result){
+	// 			//alert(typeof(result[i]));
+	// 			if(typeof(result[i])=='object' && typeof result[i]!="function"){
+	// 				var jsonstr=JSON.stringify(result[i]);
+	// 				result[i]=parseJSON(jsonstr,filter);
+	// 			}else{
+	// 				result[i]=filter(i,result[i]);
+	// 			}
+	// 		}
+	// 	}
+	// 	console.log(result);
+	// 	return result;
+	// }
+	window["yc"]["parseJSON"]=parseJSON;
 
 })();
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
 //========================================JSON的操作======================================
-///////////////////////////////////////////////////////////////////////////////////////////
-
 //将一个对象转换成json格式的字符串
 Object.prototype.toJSONString=function(){
 	var jsonarr=[];

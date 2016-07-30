@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		if(window.localStorage){     alert("浏览支持localStorage") }else{    alert("浏览暂不支持localStorage") } //或者 if(typeof window.localStorage == 'undefined'){ 	alert("浏览暂不支持localStorage") }
+		//sessionStorage 只能在当前页面获取
+		//sessionStorage - 针对一个 session 的数据存储
+		//console.log('最开始页面加载时获取'+sessionStorage.name);
+		sessionStorage["name"]="yc";
+		console.log(sessionStorage.name);
+		console.log(sessionStorage.getItem("name"));
+		//console.log(sessionStorage.key(0));
+
+		//localStorage 可以跨选项卡   
+		//localStorage - 没有时间限制的数据存储
+		//console.log("最开始页面加载"+localStorage.hello);
+		localStorage["hello"]="sfq"
+		console.log(localStorage.hello);
+		console.log(localStorage.key(0));
+
+	</script>
+</body>
+</html>

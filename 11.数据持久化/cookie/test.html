@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../lib.js"></script>
+	<script src="Cookie.js"></script>
+</head>
+<body>
+	<form id="myform">
+		<p>用户名：<input type="text" id="uname" name="uname"></p>
+		<p>密&nbsp;码：<input type="password" id="pwd" name="pwd"></p>
+		<p>
+			<select name="times" id="times">
+				<option value="1">一天</option>
+				<option value="5">五天</option>
+				<option value="0">永久</option>
+			</select>
+		</p>
+		<p><input type="checkbox" id="issave">是否保存用户信息</p>
+		<p><input type="button" id="btn" name="btn" value="提交信息"></p>
+	</form>
+	<script>
+		yc.addLoadEvent(function(){
+			if(Cookies.get('uname')){
+				yc.$('uname').value=Cookies.get('uname');
+				yc.$('pwd').value=Cookies.get('pwd');
+				yc.$('issave').checked=true;
+			}
+		})
+
+		yc.addLoadEvent(function(){
+			yc.addEvent('issave','change',function(){
+				if(yc.$('issave').checked){
+					if(yc.$('uname').value && yc.$('pwd').value){
+						var times=yc.$('times').value;
+						Cookies.set('uname',yc.$('uname').value,times*24*60);
+						Cookies.set('pwd',yc.$('pwd').value,times*24*60);
+					}
+				}else{
+					Cookies.del('uname');
+					Cookies.del('pwd');
+				}
+			})
+		})
+
+	</script>
+</body>
+</html>

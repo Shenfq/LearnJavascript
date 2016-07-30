@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>考试系统</title>
+	<script src="../lib.js"></script>
+	<script src="../sqlhelper.js"></script>
+	<script src="index.js"></script>
+	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="a.css">
+</head>
+<body>
+	<div id="questions">
+		
+	</div>
+	<script type="text/javascript">
+		sqlhelper.select("question","*","",[],get);
+		function get(rows){//从数据库中获取数据，并将获取的数据拼接成一段字符串
+			if(!rows&&rows==false){
+				alert("查询失败");
+				return ;
+			}
+			var queStr="[";
+			for(var i=0;i<rows.length;i++){
+				queStr+="[";
+				for(var tname in rows[i]){
+					if(rows[i].hasOwnProperty(tname)){
+						queStr+="'"+rows[i][tname]+"',";
+					}
+				}
+				queStr=queStr.substr(0,queStr.length-1);
+				queStr+="],";
+			}
+			queStr=queStr.substr(0,queStr.length-1);
+			queStr+="]";
+			que=eval(queStr);//把拼接的字符串转换为js代码
+			allque=new ShowQuestions(que);	
+			allque.showque();//调用方法，把题目显示到界面上
+		}
+	</script>
+</body>
+</html>
