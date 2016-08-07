@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../lib.js"></script>
+</head>
+<body>
+	<p>姓名：<input type="text" id="text" name="user" /></p>
+	<p>密码：<input type="password" id="pwd" name="pwd" /></p>
+	<p><input type="button" value="提交" id="btn" /></p>
+	<p id="result"></p>
+	<script>
+
+		var options={
+			"method":"GET",
+			"send":null,
+			"completeListener":function(){
+				yc.$("result").innerHTML=this.responseText;
+			}
+		};
+		yc.addEvent("btn","click",function(){
+			var name=yc.$("text").value;
+			var pwd=yc.$("pwd").value
+			var url=yc.addUrlParam("http://localhost/ajax/test.php","name",name);
+			var url=yc.addUrlParam(url,"pwd",pwd);
+			console.log(url);
+			// var url=yc.addUrlParam(url,"sex","male");
+			// yc.$("text").value=url;
+			req=yc.ajaxRequest(url,options);
+		});
+
+	</script>
+</body>
+</html>

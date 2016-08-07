@@ -545,24 +545,23 @@
 		}
 		if(!req) return false;
 		options=options || {};
-		options.method=option.method||"POST";
+		options.method=options.method||"POST";
 		options.send=options.send||null;
-
 		req.onreadystatechange=function(){
 			switch(req.readyState){
 				case 1://请求初始化时
 					if(options.loadListener){
-						options.loadListener.apple(req,arguments);
+						options.loadListener.apply(req,arguments);
 					}
 					break;
 				case 2://加载完成
 					if(options.loadedListener){
-						options.loadedListener.apple(req,arguments);
+						options.loadedListener.apply(req,arguments);
 					}
 					break;
 				case 3://交互
-					if(options.inseractiveListener){
-						options.inseractiveListener.apple(req,arguments);
+					if(options.ineractiveListener){
+						options.ineractiveListener.apply(req,arguments);
 					}
 					break;
 				case 4://完成交互时的回调操作
@@ -590,7 +589,7 @@
 								case "text/xml":
 								case "application/xml":
 								case "application/xhtml+xml":
-									if(option.xmlResponseListener){
+									if(options.xmlResponseListener){
 										options.xmlResponseListener.call(req,req.responseXML);
 									}
 									break;
@@ -603,12 +602,46 @@
 							if(options.completeListener){
 								options.completeListener.apply(req,arguments);
 							}
+						}else{//响应码不为200
+							if(options.errorListener){
+								options.errorListener.apply(req,arguments);
+							}
 						}
+					}catch(e){
+						alert(e);
 					}
+					break;
+
 			}
 		}
+		//打开请求
+		req.open(options.method,url,true);
+		//在此处可以自己添加请求头：
+		//e.g.   req.setRequestHeader("X-yc-Ajax-Request","AjaxRequest");
+		return req;
 	}
+	window["yc"]["getRequestobject"]=getRequestobject;
 
+	//调用该方法时，需要传入一个options的json对象
+	/*
+	options对象结构：{
+		'method':'GET' or 'POST'   不写默认为POST
+		'send':要发生的参数
+		'loadListener':readyState=1时的回调函数
+		'loadedLIstener':readyState=2时的回调函数
+		'ineractiveListener':readyState=3时的回调函数
+
+		以下是readyState=4 时的处理回调函数
+		'jsResponseListener':当返回结果是js代码时
+		'jsonResponseListener':当返回结果是json对象时
+		'xmlResponseListener':当返回结果是xml时
+		'htmlResponseListener':当返回结果是html时
+
+		'completeListener':处理完成后的回调
+
+		'errorListener':响应码不为200时的回调函数
+	}
+	*/
 	function ajaxRequest(url,options){
 		var req=getRequestobject(url,options);
 		req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -687,8 +720,6 @@
 
 
 })();
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //========================================JSON的操作======================================
