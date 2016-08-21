@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="result"></p>
+	<form action="" method="post">
+		用户名：<input type="text" name="name" id="name" /> <br>
+		密码：<input type="password" name="password" id="password" /><br>
+		<input type="button" value="登录" id="btn" onclick="login()" />
+	</form>
+	<script>
+		function createXHR(){
+			if(typeof XMLHttpRequest !="undefined"){
+				return new XMLHttpRequest();
+			}else if(typeof ActiveXObject !="undefined"){
+				if(typeof arguments.callee.activeXString != "string"){
+					var versions=["MSXML2.XMLHTTP.6.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP"];
+					for(var i=0;i<versions.length;i++){
+						try{
+							var xhr=new ActiveXObject(versions[i]);
+							arguments.callee.activeXString=versions[i];
+							return xhr;
+						}catch(ex){
+							//skip
+						}
+					}
+				}
+				return new ActiveXObject(arguments.callee.activeXString);
+			}else{
+				throw new Error("No XHR object available.");
+			}
+		}
+
+
+		
+
+		function login(){
+			request=createXHR();
+			if(request){
+				//取出用户名和密码
+				var name=document.getElementById("name").value;
+				var password=document.getElementById("password").value;
+
+				//get请求
+				request.onreadystatechange=listener;
+				request.open("POST","http://localhost/test/login.php",true);
+				request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				request.send("name="+name+"&password="+password);
+			}
+		}
+
+		//listener此回调函数用于接收服务器端的响应
+		function listener(){
+			if(request.readyState==4 && request.status==200){
+				document.getElementById("result").innerHTML=request.responseText;
+			}
+		}
+	</script>
+</body>
+</html>

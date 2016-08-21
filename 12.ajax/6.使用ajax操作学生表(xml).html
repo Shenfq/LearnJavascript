@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../javascript/lib.js"></script>
+</head>
+<body>
+	<form name="myform">
+		<input type="hidden" name="op" value="add" />
+		<p>学生名：<input id="sname" type="text" name="sname" value="张三" /></p>
+		<p>年龄：<input id="age" type="text" name="age" value="22" /></p>
+		<p><input type="button" onclick="add()" value="添加"></p>
+	</form>
+	<p id="result"></p>
+
+	<span id="showall">显示所有学生信息</span>
+	<hr>
+	<table border="1" width="700px">
+		<thead>
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</tr>
+		</thead>
+		<tbody id="mybody">
+			
+		</tbody>
+	</table>
+
+
+	<script>
+		function createXHR(){
+			if(typeof XMLHttpRequest !="undefined"){
+				return new XMLHttpRequest();
+			}else if(typeof ActiveXObject !="undefined"){
+				if(typeof arguments.callee.activeXString != "string"){
+					var versions=["MSXML2.XMLHTTP.6.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP"];
+					for(var i=0;i<versions.length;i++){
+						try{
+							var xhr=new ActiveXObject(versions[i]);
+							arguments.callee.activeXString=versions[i];
+							return xhr;
+						}catch(ex){
+							//skip
+						}
+					}
+				}
+				return new ActiveXObject(arguments.callee.activeXString);
+			}else{
+				throw new Error("No XHR object available.");
+			}
+		}
+
+		function add(){
+			var params=yc.serialize(document.myform);
+			console.log(params);
+			request=createXHR();
+			if(request){
+				request.onreadystatechange=listener;
+				request.open("POST","http://192.168.15.222:8080/testxml/student.action",true);
+				request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				request.send(params);
+			}
+		}
+
+		function listener(){
+			if(request.readyState==4 && request.status==200){
+				document.getElementById("result").innerHTML=request.responseText;
+			}
+		}
+
+		yc.addEvent("showall","click",function(){
+			request=createXHR();
+			if(request){
+				request.onreadystatechange=findAlllistener;
+				request.open("POST","http://192.168.15.222:8080/testxml/student.action",true);
+				request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				request.send("op=findAll");
+			}
+		});
+		function findAlllistener(){
+			if(request.readyState==4 && request.status==200){
+				var xml=request.responseXML;
+				var students=xml.getElementsByTagName("student");
+				var tbody=yc.$("mybody");
+				for(var i=0;i<students.length;i++){
+					var s=students[i];
+					var tr=document.createElement("tr");
+					var id=document.createElement("td");
+					id.innerHTML=s.id;
+					tr.appendChild(id);
+					for(var j=0;j<s.children.length;j++){
+						var td=document.createElement("td");
+						td.innerHTML=s.children[j].childNodes[0].nodeValue;
+						tr.appendChild(td);
+					}
+					tbody.appendChild(tr);
+					//console.log(s.id);
+				}
+			}
+		}
+
+
+		function randomString(len) {
+		　　len = len || 32;
+		　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+		　　var maxPos = $chars.length;
+		　　var pwd = '';
+		　　for (i = 0; i < len; i++) {
+		　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+		　　}
+		　　return pwd;
+		}
+
+		function aaa(){
+			yc.$("sname").value=randomString(3);
+			yc.$("age").value=parseInt((Math.random()*30));
+			add();
+		}
+		//setInterval(aaa,50);
+
+	</script>
+</body>
+</html>

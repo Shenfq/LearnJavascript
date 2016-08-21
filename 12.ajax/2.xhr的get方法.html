@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="result">abc</p>
+	<script>
+		function createXHR(){
+			if(typeof XMLHttpRequest !="undefined"){
+				return new XMLHttpRequest();
+			}else if(typeof ActiveXObject !="undefined"){
+				if(typeof arguments.callee.activeXString != "string"){
+					var versions=["MSXML2.XMLHTTP.6.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP"];
+					for(var i=0;i<versions.length;i++){
+						try{
+							var xhr=new ActiveXObject(versions[i]);
+							arguments.callee.activeXString=versions[i];
+							return xhr;
+						}catch(ex){
+							//skip
+						}
+					}
+				}
+				return new ActiveXObject(arguments.callee.activeXString);
+			}else{
+				throw new Error("No XHR object available.");
+			}
+		}
+
+
+		var request=createXHR();
+		if(request){
+			//get请求
+			request.onreadystatechange=listener;
+			request.open("GET","http://localhost/ajax/hello.php?name=zy",true);
+			request.send(null);
+		}
+
+		//listener此回调函数用于接收服务器端的响应
+		function listener(){
+			switch(request.readyState){
+				case 1:
+					console.log("载入服务器页面中...");
+					break;
+				case 2:
+					console.log("载入完成...");
+					break;
+				case 3:
+					console.log("交互...");
+					break;
+				case 4:
+					console.log("服务器响应完成...");
+					if(request.status==200){
+						console.log("服务器请求成功");
+						alert(request.responseText);
+					}
+				
+			}
+		}
+	</script>
+</body>
+</html>

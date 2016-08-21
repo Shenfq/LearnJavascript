@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function serialize(form){
+			var parts=new Array();
+			var field=null;
+			for(var i=0;i<form.elements.length;i++){
+				field=form.elements[i];
+				switch(field.type){
+					case "select-one":
+					case "select-multiple":
+						for(var j=0;j<field.options.length;j++){
+							var option=field.options[j];
+							if(option.selected){
+								var optValue="";
+								if(option.hasAttribute){
+									optValue=(option.hasAttribute("value") ? option.value : option.text);
+								}else {
+									optValue=(option.attribute["value"].sepcified ? option.value : option.text );
+								}
+								parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+							}
+						}
+						break;
+					case undefined:
+					case "file":
+					case "submit":
+					case "reset":
+					case "button":
+						break;
+					case "radio":
+					case "checkbox":
+						if(!field.checked){
+							break;
+						}
+					default:
+						parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+				}
+			}
+			return parts.join("&");
+		}
+
+		function show(){
+			var form=document.myform;
+			var result=serialize(form);
+			console.log(result);
+		}
+	</script>
+</head>
+<body>
+	<form name="myform">
+		<p>姓名：<input type="text" name="sname" /></p>
+		<p>密码：<input type="password" name="pwd" /></p>
+		<p>性别：
+			<input type="radio" name="sex" >男
+			<input type="radio" name="sex" value="女">女
+		</p>
+		<p>爱好：
+			<input type="checkbox" name="ins" >篮球
+			<input type="checkbox" name="ins" value="football">足球
+			<input type="checkbox" name="ins" value="swim">游泳
+		</p>
+		<p>
+			<select name="places" multiple>
+				<option value="北京">北京</option>
+				<option>长沙</option>
+			</select>
+		</p>
+		<p><input type="button" value="提交" onclick="show()"></p>
+	</form>
+</body>
+</html>
